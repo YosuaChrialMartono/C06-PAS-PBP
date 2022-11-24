@@ -9,9 +9,9 @@
 - Yosua Chrial Martono (2106750686)
 <br><br>
 
-## Tautan Aplikasi Heroku🔗
+<!-- ## Tautan Aplikasi Heroku🔗
 https://pts-c06-pbp.herokuapp.com/
-<br><br>
+<br><br> -->
 
 ## Brief👨‍⚕👩‍⚕️
 Salah satu isu yang menjadi prioritas dalam pertemuan G20 adalah _global health architecture_. Namun, belakangan ini yang selalu mendapatkan sorotan adalah pandemi COVID19. Padahal, masih terdapat banyak masalah kesehatan lainnya yang masih perlu diperbaiki di Indonesia. Salah satunya adalah _stunting_.
@@ -19,15 +19,17 @@ Salah satu isu yang menjadi prioritas dalam pertemuan G20 adalah _global health 
 Prevalensi _stunting_ di Indonesia masih tergolong tinggi, bahkan mencapai 24.4%. _Stunting_ dapat menyebabkan anak mengalami kesulitan dalam mencapai perkembangan fisik dan kognitif. Perlu dilakukan aksi terhadap fakta ini, mengingat anak-anak adalah genarasi calon penerus bangsa Indonesia.
 
 Salah satu penyebab umum dari _stunting_ adalah kurangnya informasi pada masyarakat tentang pentingnya memperhatikan asupan gizi dan memantau perkembangan anak-anak. Untuk mengatasi masalah tersebut, kami mengembangkan situs web Pacil Tau Stunting. Kami percaya situs web Pacil Tau Stunting dapat menjadi _one-step-solution_ untuk mengedukasi masyarakat tentang _stunting_ dan dalam jangka panjang dapat berkontribusi dalam penurunan angka _stunting_ di Indonesia.
+
+Kini, PTS hadir dalam bentuk mobile untuk menjangkau elemen masyarakat yang lebih luas.
 <br><br>
 
 ## Daftar Modul 📝
-- Landing page, login, logout, register
-- FAQ, saran
-- Artikel yang bisa di-_filter_ untuk menjadi konsumsi umum
-- Tracker pertumbuhan anak
-- Forum untuk bertanya ke tenaga kesehatan
-- _Wall of hope_ untuk kasus stunting di indonesia
+- [Diah Afia Safitri] Landing page, login, logout, register
+- [Muhammad Navis Raditya Riayatsyah] FAQ, saran
+- [Yosua Chrial Martono] Artikel yang bisa di-_filter_ untuk menjadi konsumsi umum
+- [Yan Christopher Silalahi] Tracker pertumbuhan anak
+- [Made Swastika Nata Negara] Forum untuk bertanya ke tenaga kesehatan
+- [Daffa Maulana Haekal] _Wall of hope_ untuk kasus stunting di indonesia
 <br><br>
 
 ## Peran Pengguna 👨‍👩‍👧‍👦
