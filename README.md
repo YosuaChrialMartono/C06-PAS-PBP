@@ -32,6 +32,13 @@ Kini, PTS hadir dalam bentuk mobile untuk menjangkau elemen masyarakat yang lebi
 - [Daffa Maulana Haekal] _Wall of hope_ untuk kasus stunting di indonesia
 <br><br>
 
+## Alur Pengintegrasian Modul 🕸️
+- 
+-
+- Artikel, mengambil data artikel dari web melalui medium json dan menampilkannya di applikasi
+-
+-
+
 ## Peran Pengguna 👨‍👩‍👧‍👦
 - Pengunjung biasa<br>
 Dapat mengakses landing page, artikel, dan FAQ
