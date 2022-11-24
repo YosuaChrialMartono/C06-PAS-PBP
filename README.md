@@ -34,10 +34,10 @@ Kini, PTS hadir dalam bentuk mobile untuk menjangkau elemen masyarakat yang lebi
 
 ## Alur Pengintegrasian Modul 🕸️
 - 
--
+- FAQ dan Saran, memanfaatkan fitur form untuk FAQ dan saran untuk menerima dan menampilkannya di aplikasi
 - Artikel, mengambil data artikel dari web melalui medium json dan menampilkannya di applikasi
 -
--
+- wallofhope, mengambil data gambar dari web melalui medium json dan menampilkannya di aplikasi 
 
 ## Peran Pengguna 👨‍👩‍👧‍👦
 - Pengunjung biasa<br>
