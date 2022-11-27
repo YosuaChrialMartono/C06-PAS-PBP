@@ -33,7 +33,7 @@ Kini, PTS hadir dalam bentuk mobile untuk menjangkau elemen masyarakat yang lebi
 <br><br>
 
 ## Alur Pengintegrasian Modul 🕸️
-- 
+- Landing page, login, logout, register, memanfaatkan fitur form untuk melakukan login dan register ke aplikasi, dengan tampilan awal landing page
 - FAQ dan Saran, memanfaatkan fitur form untuk FAQ dan saran untuk menerima dan menampilkannya di aplikasi
 - Artikel, mengambil data artikel dari web melalui medium json dan menampilkannya di applikasi
 -
