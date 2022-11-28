@@ -37,11 +37,7 @@ Kini, PTS hadir dalam bentuk mobile untuk menjangkau elemen masyarakat yang lebi
 <br><br>
 
 ## Alur Pengintegrasian Modul 🕸️
-- Landing page, login, logout, register, memanfaatkan fitur form untuk melakukan login dan register ke aplikasi, dengan tampilan awal landing page
-- FAQ dan Saran, memanfaatkan fitur form untuk FAQ dan saran untuk menerima dan menampilkannya di aplikasi
-- Artikel, mengambil data artikel dari web melalui medium json dan menampilkannya di applikasi
-- Forum, mengambil data percakapan forum dari web melalui medium json dan menampilkannya di aplikasi
-- wallofhope, mengambil data gambar dari web melalui medium json dan menampilkannya di aplikasi 
+Semua modul di aplikasi mobile ini diintegrasikan ke aplikasi web yang sudah dikembangkan saat PTS. Desain front end aplikasi mobile ini diimplementasikan berdasarkan desain front end aplikasi web sebelumnya. Form yang terdapat dalam aplikasi ini akan melakukan POST request ke web Pacil Tau Stunting dengan endpoint modul yang sesuai. Selain itu, pengambilan data juga akan dilakukan dengan GET request ke web untuk ditampilkan di aplikasi mobile Pacil Tau Stunting.
 
 ## Peran Pengguna 👨‍👩‍👧‍👦
 - Pengunjung biasa<br>
