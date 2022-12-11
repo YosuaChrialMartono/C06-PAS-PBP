@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:c06_pas_pbp/drawer.dart';
 
-
 class TrackerData extends StatefulWidget {
   const TrackerData({super.key});
 
@@ -18,35 +17,46 @@ class _TrackerDataState extends State<TrackerData> {
 
   @override
   void initState() {
-    super.initState();
-    _jsonData = getJsonData();
-  }
+      super.initState();
+  _jsonData = getJsonData();
+}
 
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('Data from Tracker'),
-        ),
-        drawer: const PTS_Drawer(),
-        body: Center(
-          child: FutureBuilder(
-            future: _jsonData,
-            builder: (context, snapshot) {
-              if (snapshot.hasData) {
-                // Use the data here
-                return Text('Data: ${snapshot.data}');
-              } else if (snapshot.hasError) {
-                return Text('Failed to load data: ${snapshot.error}');
-              }
-              return CircularProgressIndicator();
-            },
-          ),
+@override
+Widget build(BuildContext context) {
+  return MaterialApp(
+    home: Scaffold(
+      appBar: AppBar(
+        title: Text('Data from Tracker'),
+      ),
+      drawer: const PTS_Drawer(),
+      body: Center(
+        child: FutureBuilder(
+          future: _jsonData,
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              // Use the data here
+              return GridView.builder(
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 3,
+                ),
+                itemCount: snapshot.data?.length,
+                itemBuilder: (context, index) {
+                  return Card(
+                    child: ListTile(
+                      title: Text('Data: ${snapshot.data![index]}'),
+                    ),
+                  );
+                },
+              );
+            } else if (snapshot.hasError) {
+              return Text('Failed to load data: ${snapshot.error}');
+            }
+            return CircularProgressIndicator();
+          },
         ),
       ),
-    );
-  }
+    ),
+  );
 }
 
 Future<List<dynamic>> getJsonData() async {
@@ -58,4 +68,4 @@ Future<List<dynamic>> getJsonData() async {
     throw Exception('Failed to load data');
   }
 }
-
+}
