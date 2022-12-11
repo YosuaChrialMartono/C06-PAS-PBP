@@ -1,4 +1,3 @@
-//Continue the following code until the snippet is a valid .dart file
 import 'package:flutter/material.dart';
 import 'package:c06_pas_pbp/drawer.dart';
 
