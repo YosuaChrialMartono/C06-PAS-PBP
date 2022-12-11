@@ -128,7 +128,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.0.2"
-
   image_picker:
     dependency: "direct main"
     description:
@@ -283,7 +282,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.1.0"
-
   plugin_platform_interface:
     dependency: transitive
     description:
@@ -361,7 +359,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.1"
-
   sky_engine:
     dependency: transitive
     description: flutter

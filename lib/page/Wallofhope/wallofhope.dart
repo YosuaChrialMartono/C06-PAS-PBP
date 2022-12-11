@@ -1,5 +1,7 @@
 import 'package:c06_pas_pbp/drawer.dart';
+import 'package:c06_pas_pbp/page/Wallofhope/form_wallofhope.dart';
 import 'package:c06_pas_pbp/page/wallofhope/wallofhope_menu.dart';
+import 'package:c06_pas_pbp/utils/Fetch_Wallofhope.dart';
 import 'package:flutter/material.dart';
 
 class wallofhopePage extends StatefulWidget {
@@ -12,6 +14,7 @@ class wallofhopePage extends StatefulWidget {
 class wallofhopePageState extends State<wallofhopePage> {
   @override
   Widget build(BuildContext context) {
+    final request = null; //context.watch<CookieRequest>();
     return Scaffold(
         appBar: AppBar(
           title: const Text('My Wall of Hope'),
@@ -19,65 +22,104 @@ class wallofhopePageState extends State<wallofhopePage> {
         drawer: const PTS_Drawer(),
         body: Column(children: [
           Container(
+              decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                colors: [Color(0xff4E6C50), Color(0xffaa8b56)],
+                begin: Alignment.topRight,
+                end: Alignment.bottomLeft,
+              )),
               child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Card(
-                  clipBehavior: Clip.antiAlias,
-                  child: Column(
-                    children: [
-                      ListTile(
-                        leading: const Icon(Icons.arrow_drop_down_circle),
-                        title: const Text('Card title 1'),
-                        subtitle: Text(
-                          'Secondary Text',
-                          style:
-                              TextStyle(color: Colors.black.withOpacity(0.6)),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(16.0),
-                        child: Text(
-                          'Greyhound divisively hello coldly wonderfully marginally far upon excluding.',
-                          style:
-                              TextStyle(color: Colors.black.withOpacity(0.6)),
-                        ),
-                      ),
-                      ButtonBar(
-                        alignment: MainAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  FutureBuilder(
+                      future: fetchwallofhope(request),
+                      builder: (context, AsyncSnapshot snapshot) {
+                        if (snapshot.data == null) {
+                          return Column(
+                            children: [
+                              addSection(),
+                              const Center(child: CircularProgressIndicator()),
+                            ],
+                          );
+                        } else {
+                          if (snapshot.data <= 0) {
+                            return Column(
+                              children: [
+                                addSection(),
+                                const Text(
+                                  "Wall of hope kosong!, silahkan isi untuk menampilkan wall of hope",
+                                  style: TextStyle(
+                                      color: Colors.white, fontSize: 18),
+                                ),
+                                const SizedBox(height: 8),
+                              ],
+                            );
+                          }
+                          else{
+                            return ListView.builder(
+                            itemCount: snapshot.data!.length,
+                            itemBuilder: (_, index) {
+                              
+                            });
+                          }
+                        }
+                      }),
+                  Card(
+                      clipBehavior: Clip.antiAlias,
+                      child: Column(
                         children: [
-                          TextButton(
-                            style: ButtonStyle(
-                              backgroundColor:
-                                  MaterialStateProperty.all(Colors.blue),
-                            ),
-                            onPressed: () {
-                              // Perform some action
-                            },
-                            child: const Text(
-                              'ACTION 1',
-                              style: TextStyle(color: Colors.white),
+                          ListTile(
+                            leading: const Icon(Icons.arrow_drop_down_circle),
+                            title: const Text('Card title 1'),
+                            subtitle: Text(
+                              'Secondary Text',
+                              style: TextStyle(
+                                  color: Colors.black.withOpacity(0.6)),
                             ),
                           ),
-                          TextButton(
-                            style: ButtonStyle(
-                              backgroundColor:
-                                  MaterialStateProperty.all(Colors.blue),
+                          Padding(
+                            padding: const EdgeInsets.all(16.0),
+                            child: Text(
+                              'Greyhound divisively hello coldly wonderfully marginally far upon excluding.',
+                              style: TextStyle(
+                                  color: Colors.black.withOpacity(0.6)),
                             ),
-                            onPressed: () {
-                              // Perform some action
-                            },
-                            child: const Text(
-                              'ACTION 2',
-                              style: TextStyle(color: Colors.white),
-                            ),
+                          ),
+                          ButtonBar(
+                            alignment: MainAxisAlignment.start,
+                            children: [
+                              TextButton(
+                                style: ButtonStyle(
+                                  backgroundColor:
+                                      MaterialStateProperty.all(Colors.blue),
+                                ),
+                                onPressed: () {
+                                  // Perform some action
+                                },
+                                child: const Text(
+                                  'ACTION 1',
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                              ),
+                              TextButton(
+                                style: ButtonStyle(
+                                  backgroundColor:
+                                      MaterialStateProperty.all(Colors.blue),
+                                ),
+                                onPressed: () {
+                                  // Perform some action
+                                },
+                                child: const Text(
+                                  'ACTION 2',
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                              ),
+                            ],
                           ),
                         ],
-                      ),
-                    ],
-                  )),
-            ],
-          )
+                      )),
+                ],
+              )
 
               // FutureBuilder(
               //     future: fetchWatchlist(),
@@ -177,7 +219,38 @@ class wallofhopePageState extends State<wallofhopePage> {
                 style: TextStyle(color: Colors.white),
               ),
             ),
-          )
+          ),
         ]));
   }
+
+  Widget addSection() {
+    return Padding(
+      padding: const EdgeInsets.only(top: 15, left: 18),
+      child: Align(
+        alignment: Alignment.topLeft,
+        child: SizedBox(
+          width: 110,
+          height: 40,
+          child: TextButton(
+            style: ButtonStyle(
+              backgroundColor: MaterialStateProperty.all(Colors.white),
+            ),
+            onPressed: () {
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const formWallofhopePage()),
+              );
+            },
+            child: const Text(
+              "Kembali Isi Form",
+              style: TextStyle(color: Colors.white),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  
 }

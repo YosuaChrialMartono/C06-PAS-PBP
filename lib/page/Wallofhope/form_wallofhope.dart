@@ -1,6 +1,8 @@
+import 'package:c06_pas_pbp/model/Model_Wallofhope.dart';
 import 'package:c06_pas_pbp/page/wallofhope/wallofhope_menu.dart';
 import 'package:flutter/material.dart';
 import 'package:c06_pas_pbp/drawer.dart';
+import 'package:c06_pas_pbp/utils/Fetch_Wallofhope.dart';
 
 class formWallofhopePage extends StatefulWidget {
   const formWallofhopePage({super.key});
@@ -19,15 +21,22 @@ class _formWallofhopePage extends State<formWallofhopePage> {
 
   @override
   Widget build(BuildContext context) {
+    final request = null; //context<Wallofhope>;
     return Scaffold(
         appBar: AppBar(
           title: Text(widget.title),
         ),
         drawer: const PTS_Drawer(),
-        body: Form(
+        body: Container(
+          decoration: const BoxDecoration(
+              gradient: LinearGradient(
+            colors: [Color(0xff4E6C50), Color(0xffaa8b56)],
+            begin: Alignment.topRight,
+            end: Alignment.bottomLeft,
+          )),
+          child: Form(
             key: _formKey,
-            child: SingleChildScrollView(
-                child: Container(
+            child: SingleChildScrollView( 
               padding: const EdgeInsets.all(20.0),
               child: Column(children: [
                 Padding(
@@ -144,50 +153,89 @@ class _formWallofhopePage extends State<formWallofhopePage> {
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: TextButton(
-                            style: ButtonStyle(
-                              backgroundColor:
-                                  MaterialStateProperty.all(Colors.blue),
-                            ),
-                            onPressed: () {
-                              if (_formKey.currentState!.validate()) {
-                                showDialog(
-                                  context: context,
-                                  builder: (context) {
-                                    return Dialog(
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(10),
-                                      ),
-                                      elevation: 15,
-                                      child: Container(
-                                        child: ListView(
-                                          padding: const EdgeInsets.only(
-                                              top: 20, bottom: 20),
-                                          shrinkWrap: true,
-                                          children: <Widget>[
-                                            const Center(
-                                                child: Text(
-                                                    'Berhasil Menambahkan Data')),
-                                            const SizedBox(height: 20),
-                                            TextButton(
-                                              onPressed: () {
-                                                Navigator.pop(context);
-                                              },
-                                              child: const Text('Kembali'),
-                                            ),
-                                          ],
+                              style: ButtonStyle(
+                                backgroundColor:
+                                    MaterialStateProperty.all(Colors.blue),
+                              ),
+                              onPressed: () async {
+                                if (_formKey.currentState!.validate()) {
+                                  showDialog(
+                                    context: context,
+                                    builder: (context) {
+                                      return Dialog(
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(10),
                                         ),
-                                      ),
-                                    );
-                                  },
-                                );
-                              }
-                            },
-                            child: const Text(
-                              "Simpan",
-                              style: TextStyle(color: Colors.white),
-                            )),
+                                        elevation: 15,
+                                        child: Container(
+                                          child: ListView(
+                                            padding: const EdgeInsets.only(
+                                                top: 20, bottom: 20),
+                                            shrinkWrap: true,
+                                            children: <Widget>[
+                                              const Center(
+                                                  child: Text(
+                                                      'Berhasil Menambahkan Data')),
+                                              const SizedBox(height: 20),
+                                              TextButton(
+                                                onPressed: () {
+                                                  Navigator.pop(context);
+                                                },
+                                                child: const Text('Kembali'),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      );
+                                    },
+                                  );
+                                  const url =
+                                      "https://pts-c06-pbp.up.railway.app/wallofhope/add/";
+                                  final response = await request.post(url, {
+                                    "judul": judul,
+                                    "link": link,
+                                    "deskripsi": deskripsi,
+                                  });
+                                } else {
+                                  showDialog(
+                                    context: context,
+                                    builder: (context) {
+                                      return Dialog(
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                        ),
+                                        elevation: 15,
+                                        child: Container(
+                                          child: ListView(
+                                            padding: const EdgeInsets.only(
+                                                top: 20, bottom: 20),
+                                            shrinkWrap: true,
+                                            children: <Widget>[
+                                              const Center(
+                                                  child: Text(
+                                                      'Terdapat kesalahan, Silahkan coba lagi!')),
+                                              const SizedBox(height: 20),
+                                              TextButton(
+                                                onPressed: () {
+                                                  Navigator.pop(context);
+                                                },
+                                                child: const Text('Kembali'),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      );
+                                    },
+                                  );
+                                }
+                              },
+                              child: const Text(
+                                "Simpan",
+                                style: TextStyle(color: Colors.white),
+                              )),
                         ),
-                        
                         TextButton(
                             style: ButtonStyle(
                               backgroundColor:
@@ -208,6 +256,9 @@ class _formWallofhopePage extends State<formWallofhopePage> {
                       ],
                     )),
               ]),
-            ))));
+            )
+            )
+          )
+        );
   }
 }

@@ -24,6 +24,16 @@ class _wallofhopeMenuPage extends State<wallofhopeMenuPage> {
         ),
         drawer: const PTS_Drawer(),
         body: Container(
+           decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                colors: [
+                  Color(0xff4E6C50),
+                  Color(0xffaa8b56)
+                ],
+                begin: Alignment.bottomLeft,
+                end: Alignment.topRight,
+              )
+            ),
           padding: const EdgeInsets.all(20.0),
           child: Center(
             child: Column(
@@ -34,7 +44,7 @@ class _wallofhopeMenuPage extends State<wallofhopeMenuPage> {
                   child: Text(
                     "Wall Of Hope Menu",
                     style: TextStyle(
-                      color: Colors.black,
+                      color: Colors.white,
                       fontFamily: "Roboto",
                       fontSize: 40,
                     ),
