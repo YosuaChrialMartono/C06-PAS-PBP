@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:c06_pas_pbp/main.dart';
 import 'package:c06_pas_pbp/page/wallofhope.dart';
 import 'package:c06_pas_pbp/page/article/article.dart';
+import 'package:c06_pas_pbp/page/tracker.dart';
 
 class PTS_Drawer extends StatelessWidget {
   const PTS_Drawer({super.key});
@@ -39,6 +40,16 @@ class PTS_Drawer extends StatelessWidget {
             Navigator.pushReplacement(
               context,
               MaterialPageRoute(builder: (context) => const MyArticlePage()),
+            );
+          },
+        ),
+        ListTile(
+          title: const Text('Tracker'),
+          onTap: () {
+            // Route ke page artikel
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) => const TrackerPage()),
             );
           },
         ),
