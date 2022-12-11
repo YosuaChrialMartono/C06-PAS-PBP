@@ -1,7 +1,5 @@
 import 'package:c06_pas_pbp/drawer.dart';
-import 'package:c06_pas_pbp/page/wallofhope.dart';
-import 'package:c06_pas_pbp/page/form_wallofhope.dart';
-import 'package:c06_pas_pbp/page/wallofhope_menu.dart';
+import 'package:c06_pas_pbp/page/wallofhope/wallofhope_menu.dart';
 import 'package:flutter/material.dart';
 
 class wallofhopePage extends StatefulWidget {
