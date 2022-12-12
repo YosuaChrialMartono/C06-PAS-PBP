@@ -1,45 +1,26 @@
 import 'package:c06_pas_pbp/drawer.dart';
-import 'package:c06_pas_pbp/model/article.dart';
+import 'package:c06_pas_pbp/model/comment.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:intl/intl.dart';
-import 'package:pbp_django_auth/pbp_django_auth.dart';
-import 'package:provider/provider.dart';
-import 'dart:convert';
 
-class MyDetailPage extends StatefulWidget {
-  const MyDetailPage({super.key, required this.modelArtikel});
-  final Articles modelArtikel;
+class ForumDetailPage extends StatefulWidget {
+  const ForumDetailPage({super.key, required this.modelForum});
+  final Comment modelForum;
 
   @override
-  State<MyDetailPage> createState() => _MyDetailPageState(modelArtikel);
+  State<ForumDetailPage> createState() => _ForumDetailPageState(modelForum);
 }
 
-class _MyDetailPageState extends State<MyDetailPage> {
-  final _formKey = GlobalKey<FormState>();
-  Articles model;
-  String _author = "";
-  _MyDetailPageState(this.model);
+class _ForumDetailPageState extends State<ForumDetailPage> {
+  Comment model;
+  _ForumDetailPageState(this.model);
   @override
   Widget build(BuildContext context) {
-    final request = context.watch<CookieRequest>();
-    Future<void> getAuthor() async {
-      final response = await request.get(
-          'https://pts-c06-pbp.up.railway.app/auth/show-user-json-id/${model.fields.author}');
-
-      final String author = await response[0]["fields"]["nama"];
-      print(author.toString());
-      setState(() {
-        _author = author;
-      });
-    }
-
-    getAuthor();
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
-        title: Text(model.pk),
-        backgroundColor: Color(0xffAA8B56),
+        title: Text("Forum Diskusi"),
+        backgroundColor: const Color(0xffAA8B56),
         centerTitle: true,
       ), // Menambahkan drawer menu
       drawer: const PTS_Drawer(),
@@ -58,7 +39,7 @@ class _MyDetailPageState extends State<MyDetailPage> {
               padding: const EdgeInsets.all(8.0),
               child: Center(
                 child: Text(
-                  model.pk,
+                  model.title.toString(),
                   style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 26,
@@ -80,7 +61,7 @@ class _MyDetailPageState extends State<MyDetailPage> {
                     ),
                   ),
                   Text(
-                    DateFormat.yMMMd().format(model.fields.date),
+                    model.date.toString(),
                     style: const TextStyle(
                       fontSize: 14,
                       color: Color(0xfff0ebce),
@@ -103,7 +84,7 @@ class _MyDetailPageState extends State<MyDetailPage> {
                     ),
                   ),
                   Text(
-                    '${_author}',
+                    '${model.author}',
                     style: const TextStyle(
                       fontSize: 14,
                       color: Color(0xfff0ebce),
@@ -120,7 +101,7 @@ class _MyDetailPageState extends State<MyDetailPage> {
                   children: [
                     Flexible(
                         child: Text(
-                      model.fields.content,
+                      model.content.toString(),
                       style: TextStyle(color: Color(0xfff0ebce)),
                     ))
                   ],
