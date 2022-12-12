@@ -1,3 +1,4 @@
+import 'package:c06_pas_pbp/page/Wallofhope/wallofhope.dart';
 import 'package:flutter/material.dart';
 import 'package:c06_pas_pbp/main.dart';
 import 'package:c06_pas_pbp/page/wallofhope/wallofhope_menu.dart';
@@ -31,8 +32,7 @@ class PTS_Drawer extends StatelessWidget {
             // Route menu ke halaman form
             Navigator.pushReplacement(
               context,
-              MaterialPageRoute(
-                  builder: (context) => const wallofhopeMenuPage()),
+              MaterialPageRoute(builder: (context) => const wallofhopePage()),
             );
           },
         ),
