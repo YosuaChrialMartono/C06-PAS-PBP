@@ -147,6 +147,107 @@ class _ArticleFormState extends State<ArticleForm> {
                                   'title': title,
                                   'content': content,
                                 });
+                            print(response);
+                            if (response["status"]) {
+                              showDialog(
+                                  context: context,
+                                  builder: (context) {
+                                    return Dialog(
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(20)),
+                                      elevation: 15,
+                                      child: Container(
+                                        child: ListView(
+                                          padding: const EdgeInsets.all((20)),
+                                          shrinkWrap: true,
+                                          children: <Widget>[
+                                            SizedBox(
+                                              height: 20,
+                                            ),
+                                            Center(
+                                              child: Column(
+                                                children: [
+                                                  Text(
+                                                    response["message"],
+                                                    textAlign: TextAlign.center,
+                                                    style:
+                                                        TextStyle(fontSize: 16),
+                                                  )
+                                                ],
+                                              ),
+                                            ),
+                                            SizedBox(
+                                              height: 20,
+                                            ),
+                                            TextButton(
+                                                onPressed: (() {
+                                                  Navigator.pushReplacement(
+                                                    context,
+                                                    MaterialPageRoute(
+                                                        builder: (context) =>
+                                                            const MyArticlePage()),
+                                                  );
+                                                  ;
+                                                }),
+                                                child: Text(
+                                                  'ok',
+                                                  style:
+                                                      TextStyle(fontSize: 16),
+                                                )),
+                                          ],
+                                        ),
+                                      ),
+                                    );
+                                  });
+                            } else {
+                              showDialog(
+                                  context: context,
+                                  builder: (context) {
+                                    return Dialog(
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(20)),
+                                      elevation: 15,
+                                      child: Container(
+                                        child: ListView(
+                                          padding: const EdgeInsets.all((20)),
+                                          shrinkWrap: true,
+                                          children: <Widget>[
+                                            SizedBox(
+                                              height: 20,
+                                            ),
+                                            Center(
+                                              child: Column(
+                                                children: [
+                                                  Text(
+                                                    response["message"]["title"]
+                                                        [0],
+                                                    textAlign: TextAlign.center,
+                                                    style:
+                                                        TextStyle(fontSize: 16),
+                                                  )
+                                                ],
+                                              ),
+                                            ),
+                                            SizedBox(
+                                              height: 20,
+                                            ),
+                                            TextButton(
+                                                onPressed: (() {
+                                                  Navigator.pop(context);
+                                                }),
+                                                child: Text(
+                                                  'ok',
+                                                  style:
+                                                      TextStyle(fontSize: 16),
+                                                )),
+                                          ],
+                                        ),
+                                      ),
+                                    );
+                                  });
+                            }
                           }
                         },
                       )),
