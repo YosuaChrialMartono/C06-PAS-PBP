@@ -30,13 +30,20 @@ class _LandingPageState extends State<LandingPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Pacil Tau Stunting',
-            style: GoogleFonts.montserrat(
-                fontSize: 25,
-                fontWeight: FontWeight.bold,
-                color: Color(0xfff0ebce))),
+          title: Text('Pacil Tau Stunting',
+              style: GoogleFonts.montserrat(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: Color(0xff395144))),
+          backgroundColor: Color(0xfff0ebce)),
+      body: Container(
+        decoration: const BoxDecoration(
+            gradient: LinearGradient(
+          colors: [Color(0xff4E6C50), Color(0xffaa8b56)],
+          begin: Alignment.bottomLeft,
+          end: Alignment.topRight,
+        )),
       ),
-      body: Container(),
     );
   }
 }

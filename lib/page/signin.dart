@@ -13,7 +13,6 @@ class MySigninPage extends StatelessWidget {
     return MaterialApp(
       title: 'Signin',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(primarySwatch: Colors.blue, primaryColor: Colors.black),
       home: Signin(),
     );
   }
@@ -36,7 +35,12 @@ class _SigninState extends State<Signin> {
         body: Container(
       width: MediaQuery.of(context).size.width,
       padding: const EdgeInsets.all(8),
-      color: Colors.white,
+      decoration: const BoxDecoration(
+          gradient: LinearGradient(
+        colors: [Color(0xff4E6C50), Color(0xffaa8b56)],
+        begin: Alignment.bottomLeft,
+        end: Alignment.topRight,
+      )),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -48,84 +52,90 @@ class _SigninState extends State<Signin> {
               style: GoogleFonts.montserrat(
                   fontSize: 25,
                   fontWeight: FontWeight.bold,
-                  color: Colors.black)),
+                  color: Color(0xff395144))),
           Container(
-            padding: const EdgeInsets.fromLTRB(30, 15, 30, 0),
+            padding: const EdgeInsets.fromLTRB(50, 15, 50, 0),
             child: TextFormField(
               decoration: InputDecoration(
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  hintText: "Masukan Email",
-                  hintStyle: TextStyle(color: Colors.black87),
-                  prefixIcon: Icon(
-                    Icons.email,
-                    size: 30,
-                  ),
-                  labelText: "Email",
-                  labelStyle: TextStyle(color: Colors.black87)),
+                filled: true,
+                fillColor: Color(0xfff0ebce),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                hintText: "Email",
+                hintStyle: TextStyle(color: Colors.black),
+                prefixIcon: Icon(
+                  Icons.email,
+                  size: 30,
+                ),
+              ),
             ),
           ),
           Container(
-            padding: const EdgeInsets.fromLTRB(30, 15, 30, 0),
+            padding: const EdgeInsets.fromLTRB(50, 10, 50, 0),
             child: TextFormField(
               decoration: InputDecoration(
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  hintText: "Masukan Username",
-                  hintStyle: TextStyle(color: Colors.black87),
-                  prefixIcon: Icon(
-                    Icons.person_pin_outlined,
-                    size: 30,
-                  ),
-                  labelText: "Username",
-                  labelStyle: TextStyle(color: Colors.black87)),
+                filled: true,
+                fillColor: Color(0xfff0ebce),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                hintText: "Username",
+                hintStyle: TextStyle(color: Colors.black),
+                prefixIcon: Icon(
+                  Icons.person_pin_outlined,
+                  size: 30,
+                ),
+              ),
             ),
           ),
           Container(
-            padding: const EdgeInsets.fromLTRB(30, 15, 30, 0),
+            padding: const EdgeInsets.fromLTRB(50, 10, 50, 0),
             child: TextFormField(
               decoration: InputDecoration(
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  hintText: "Masukan Nama Lengkap",
-                  hintStyle: TextStyle(color: Colors.black87),
-                  prefixIcon: Icon(
-                    Icons.person,
-                    size: 30,
-                  ),
-                  labelText: "Nama Lengkap",
-                  labelStyle: TextStyle(color: Colors.black87)),
+                filled: true,
+                fillColor: Color(0xfff0ebce),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                hintText: "Nama Lengkap",
+                hintStyle: TextStyle(color: Colors.black),
+                prefixIcon: Icon(
+                  Icons.person,
+                  size: 30,
+                ),
+              ),
             ),
           ),
           Container(
-            padding: const EdgeInsets.fromLTRB(30, 15, 30, 0),
+            padding: const EdgeInsets.fromLTRB(50, 10, 50, 0),
             child: TextFormField(
               decoration: InputDecoration(
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  hintText: "Masukan Password",
-                  hintStyle: TextStyle(color: Colors.black87),
-                  prefixIcon: Icon(
-                    Icons.key_rounded,
-                    size: 30,
-                  ),
-                  labelText: "Password",
-                  labelStyle: TextStyle(color: Colors.black87)),
+                filled: true,
+                fillColor: Color(0xfff0ebce),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                hintText: "Password",
+                hintStyle: TextStyle(color: Colors.black),
+                prefixIcon: Icon(
+                  Icons.key_rounded,
+                  size: 30,
+                ),
+              ),
             ),
           ),
           Container(
-            padding: const EdgeInsets.fromLTRB(30, 15, 30, 0),
+            padding: const EdgeInsets.fromLTRB(50, 10, 50, 0),
             child: DropdownButtonFormField(
               decoration: InputDecoration(
+                  filled: true,
+                  fillColor: Color(0xfff0ebce),
                   border: OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.black, width: 2),
-                borderRadius: BorderRadius.circular(10),
-              )),
-              dropdownColor: Colors.white,
+                    borderSide: BorderSide(color: Colors.black, width: 2),
+                    borderRadius: BorderRadius.circular(20),
+                  )),
+              //dropdownColor: Colors.white,
               value: role,
               items: listRole.map((String items) {
                 return DropdownMenuItem(
@@ -146,11 +156,14 @@ class _SigninState extends State<Signin> {
                 style: ElevatedButton.styleFrom(
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10)),
-                    minimumSize: Size(100, 45)),
+                    minimumSize: Size(100, 45),
+                    backgroundColor: Color(0xffAA8B56)),
                 child: Text(
-                  'Signin',
+                  'Sign in',
                   style: GoogleFonts.montserrat(
-                      fontSize: 15, fontWeight: FontWeight.bold),
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold,
+                      color: Color(0xfff0ebce)),
                 ),
                 onPressed: () {
                   Navigator.push(

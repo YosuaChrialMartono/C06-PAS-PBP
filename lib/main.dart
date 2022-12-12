@@ -26,7 +26,7 @@ class _MyHomePage extends State<MyHomePage> {
               children: [
                 Positioned.fill(
                   child: Opacity(
-                    opacity: 0.6,
+                    opacity: 0.5,
                     child: Image.asset('assets/bg.jpg', fit: BoxFit.cover),
                   ),
                 ),
@@ -68,7 +68,9 @@ class _MyHomePage extends State<MyHomePage> {
                             child: Text(
                               'Login',
                               style: GoogleFonts.montserrat(
-                                  fontSize: 15, fontWeight: FontWeight.bold),
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.bold,
+                                  color: Color(0xfff0ebce)),
                             ),
                             onPressed: () {
                               Navigator.push(
@@ -90,7 +92,9 @@ class _MyHomePage extends State<MyHomePage> {
                             child: Text(
                               'Sign in',
                               style: GoogleFonts.montserrat(
-                                  fontSize: 15, fontWeight: FontWeight.bold),
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.bold,
+                                  color: Color(0xfff0ebce)),
                             ),
                             onPressed: () {
                               Navigator.push(

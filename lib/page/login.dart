@@ -15,7 +15,6 @@ class MyLoginPage extends StatelessWidget {
     return MaterialApp(
       title: 'Login',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(primarySwatch: Colors.blue, primaryColor: Colors.black),
       home: Login(),
     );
   }
@@ -39,7 +38,12 @@ class _LoginState extends State<Login> {
       key: _formKey,
       width: MediaQuery.of(context).size.width,
       padding: const EdgeInsets.all(8),
-      color: Colors.white,
+      decoration: const BoxDecoration(
+          gradient: LinearGradient(
+        colors: [Color(0xff4E6C50), Color(0xffaa8b56)],
+        begin: Alignment.bottomLeft,
+        end: Alignment.topRight,
+      )),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -48,22 +52,23 @@ class _LoginState extends State<Login> {
               style: GoogleFonts.montserrat(
                   fontSize: 25,
                   fontWeight: FontWeight.bold,
-                  color: Colors.black)),
+                  color: Color(0xff395144))),
           Container(
-            padding: const EdgeInsets.fromLTRB(40, 15, 40, 0),
+            padding: const EdgeInsets.fromLTRB(50, 15, 50, 0),
             child: TextFormField(
               decoration: InputDecoration(
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  hintText: "Masukan Username",
-                  hintStyle: TextStyle(color: Colors.black87),
-                  prefixIcon: Icon(
-                    Icons.person,
-                    size: 30,
-                  ),
-                  labelText: "Username",
-                  labelStyle: TextStyle(color: Colors.black87)),
+                filled: true,
+                fillColor: Color(0xfff0ebce),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                hintText: "Username",
+                hintStyle: TextStyle(color: Colors.black),
+                prefixIcon: Icon(
+                  Icons.person,
+                  size: 30,
+                ),
+              ),
               onChanged: (String? value) {
                 setState(() {
                   _username = value!;
@@ -72,20 +77,21 @@ class _LoginState extends State<Login> {
             ),
           ),
           Container(
-            padding: const EdgeInsets.fromLTRB(30, 15, 30, 0),
+            padding: const EdgeInsets.fromLTRB(50, 10, 50, 0),
             child: TextFormField(
               decoration: InputDecoration(
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  hintText: "Masukan Password",
-                  hintStyle: TextStyle(color: Colors.black87),
-                  prefixIcon: Icon(
-                    Icons.key,
-                    size: 30,
-                  ),
-                  labelText: "Password",
-                  labelStyle: TextStyle(color: Colors.black87)),
+                filled: true,
+                fillColor: Color(0xfff0ebce),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                hintText: "Password",
+                hintStyle: TextStyle(color: Colors.black),
+                prefixIcon: Icon(
+                  Icons.key,
+                  size: 30,
+                ),
+              ),
               onChanged: (String? value) {
                 setState(() {
                   _password = value!;
@@ -99,11 +105,14 @@ class _LoginState extends State<Login> {
                 style: ElevatedButton.styleFrom(
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10)),
-                    minimumSize: Size(100, 45)),
+                    minimumSize: Size(100, 45),
+                    backgroundColor: Color(0xffAA8B56)),
                 child: Text(
                   'Login',
                   style: GoogleFonts.montserrat(
-                      fontSize: 15, fontWeight: FontWeight.bold),
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold,
+                      color: Color(0xfff0ebce)),
                 ),
                 onPressed: () {
                   Navigator.push(
@@ -120,7 +129,9 @@ class _LoginState extends State<Login> {
                 child: Text(
                   'Sign in',
                   style: GoogleFonts.montserrat(
-                      fontSize: 15, fontWeight: FontWeight.bold),
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold,
+                      color: Color(0xff395144)),
                 ),
                 onPressed: () {
                   Navigator.push(
