@@ -68,16 +68,6 @@ class PTS_Drawer extends StatelessWidget {
           },
         ),
         ListTile(
-          title: const Text('Tracker Data'),
-          onTap: () {
-            // Route ke page artikel
-            Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(builder: (context) => const TrackerData()),
-            );
-          },
-        ),
-        ListTile(
           title: const Text('FAQ'),
           onTap: () {
             // Route ke page artikel
