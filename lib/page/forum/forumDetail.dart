@@ -21,7 +21,7 @@ class _ForumDetailPageState extends State<ForumDetailPage> {
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
-        title: Text(model.id.toString()),
+        title: Text(model.title.toString()),
         backgroundColor: const Color(0xffAA8B56),
         centerTitle: true,
       ), // Menambahkan drawer menu
@@ -41,7 +41,7 @@ class _ForumDetailPageState extends State<ForumDetailPage> {
               padding: const EdgeInsets.all(8.0),
               child: Center(
                 child: Text(
-                  model.id.toString(),
+                  model.title.toString(),
                   style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 26,
@@ -63,8 +63,7 @@ class _ForumDetailPageState extends State<ForumDetailPage> {
                     ),
                   ),
                   Text(
-                    DateFormat.yMMMd()
-                        .format(DateTime.parse(model.date.toString())),
+                    model.date.toString(),
                     style: const TextStyle(
                       fontSize: 14,
                       color: Color(0xfff0ebce),

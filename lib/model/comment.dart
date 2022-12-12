@@ -8,44 +8,42 @@ String commentToJson(List<Comment> data) =>
     json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
 class Comment {
-  int? id;
-  String? author;
-  String? parent;
+  int? author;
+  Null? parent;
   String? date;
   bool? isThread;
   String? title;
   String? content;
   int? replies;
 
-  Comment({
-    this.id,
-    this.author,
-    this.parent,
-    this.date,
-    this.isThread,
-    this.title,
-    this.content,
-  });
+  Comment(
+      {this.author,
+      this.parent,
+      this.date,
+      this.isThread,
+      this.title,
+      this.content,
+      this.replies});
 
-  factory Comment.fromJson(Map<String, dynamic> json) => Comment(
-        id: 1,
-        author: json['author'],
-        parent: json['parent'],
-        date: json['date'],
-        isThread: json['is_thread'],
-        title: json['title'],
-        content: json['content'],
-      );
+  Comment.fromJson(Map<String, dynamic> json) {
+    author = json['author'];
+    parent = json['parent'];
+    date = json['date'];
+    isThread = json['is_thread'];
+    title = json['title'];
+    content = json['content'];
+    replies = json['replies'];
+  }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{
-      'author': author,
-      'parent': parent,
-      'date': date,
-      'is_thread': isThread,
-      'title': title,
-      'content': content,
-    };
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['author'] = author;
+    data['parent'] = parent;
+    data['date'] = date;
+    data['is_thread'] = isThread;
+    data['title'] = title;
+    data['content'] = content;
+    data['replies'] = replies;
     return data;
   }
 
@@ -64,7 +62,8 @@ class Comment {
     List<Comment> listComments = [];
     for (var i in data) {
       if (i != null) {
-        listComments.add(Comment.fromJson(i["fields"]));
+        print(Comment.fromJson(i));
+        listComments.add(Comment.fromJson(i));
       }
     }
 
@@ -73,6 +72,6 @@ class Comment {
 
   @override
   String toString() {
-    return "{$id, $author, $parent, $date, $isThread, $title, $content}";
+    return "{$author, $parent, $date, $isThread, $title, $content}";
   }
 }
