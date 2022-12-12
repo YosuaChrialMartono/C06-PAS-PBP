@@ -3,7 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:c06_pas_pbp/model/faq_rec.dart';
 import 'package:c06_pas_pbp/drawer.dart';
 import 'package:http/http.dart' as http;
+import 'package:provider/provider.dart';
 import 'dart:convert';
+
+import 'package:pbp_django_auth/pbp_django_auth.dart';
 
 class FAQ extends StatefulWidget {
   const FAQ({super.key});
@@ -13,7 +16,11 @@ class FAQ extends StatefulWidget {
 }
 
 class _FAQstate extends State<FAQ> {
-  Future<List<Experience>>
+  final _formKey = GlobalKey<FormState>();
+  String nama = "";
+  String email = "";
+  String nomorHP = "";
+  String message = "";
 
   Future<List<FaqRecommendations>> fetchFAQRec() async {
     var urlGet = Uri.parse('https://pts-c06-pbp.up.railway.app/faq/json/');
@@ -38,6 +45,7 @@ class _FAQstate extends State<FAQ> {
 
   @override
   Widget build(BuildContext context) {
+    final request = context.watch<CookieRequest>();
     ListTile makeListTile(FaqRecommendations faqRec) => ListTile(
           contentPadding:
               const EdgeInsets.symmetric(horizontal: 20.0, vertical: 5.0),
@@ -115,6 +123,7 @@ class _FAQstate extends State<FAQ> {
                   content: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Form(
+                      key: _formKey,
                       child: Column(
                         children: <Widget>[
                           TextFormField(
@@ -122,24 +131,88 @@ class _FAQstate extends State<FAQ> {
                               labelText: 'Nama Lengkap',
                               icon: Icon(Icons.account_box),
                             ),
+                            onChanged: (String? value) {
+                              setState(() {
+                                nama = value!;
+                              });
+                            },
+                            onSaved: (String? value) {
+                              setState(() {
+                                nama = value!;
+                              });
+                            },
+                            validator: (String? value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Tidak boleh kosong!';
+                              }
+                              return null;
+                            },
                           ),
                           TextFormField(
                             decoration: const InputDecoration(
                               labelText: 'Email',
                               icon: Icon(Icons.email),
                             ),
+                            onChanged: (String? value) {
+                              setState(() {
+                                email = value!;
+                              });
+                            },
+                            onSaved: (String? value) {
+                              setState(() {
+                                email = value!;
+                              });
+                            },
+                            validator: (String? value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Tidak boleh kosong!';
+                              }
+                              return null;
+                            },
                           ),
                           TextFormField(
                             decoration: const InputDecoration(
                               labelText: 'Nomor HP',
                               icon: Icon(Icons.local_phone),
                             ),
+                            onChanged: (String? value) {
+                              setState(() {
+                                nomorHP = value!;
+                              });
+                            },
+                            onSaved: (String? value) {
+                              setState(() {
+                                nomorHP = value!;
+                              });
+                            },
+                            validator: (String? value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Tidak boleh kosong!';
+                              }
+                              return null;
+                            },
                           ),
                           TextFormField(
                             decoration: const InputDecoration(
                               labelText: 'Pesan',
                               icon: Icon(Icons.message),
                             ),
+                            onChanged: (String? value) {
+                              setState(() {
+                                message = value!;
+                              });
+                            },
+                            onSaved: (String? value) {
+                              setState(() {
+                                message = value!;
+                              });
+                            },
+                            validator: (String? value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Tidak boleh kosong!';
+                              }
+                              return null;
+                            },
                           ),
                         ],
                       ),
@@ -148,8 +221,18 @@ class _FAQstate extends State<FAQ> {
                   actions: [
                     ElevatedButton(
                       child: const Text('Submit'),
-                      onPressed: () {
+                      onPressed: () async {
                         // TODO: implement HTTP POST
+                        if (_formKey.currentState!.validate()) {
+                          final response = await request.post(
+                              'https://pts-c06-pbp.up.railway.app/faq/post-exp/',
+                              {
+                                'nama': nama,
+                                'email': email,
+                                'nomorHP': nomorHP,
+                                'message': message,
+                              });
+                        }
                       },
                     )
                   ],
