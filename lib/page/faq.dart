@@ -229,13 +229,14 @@ class _FAQstate extends State<FAQ> {
                       onPressed: () async {
                         if (_formKey.currentState!.validate()) {
                           final response = await request.post(
-                              'https://pts-c06-pbp.up.railway.app/faq/post-exp/',
-                              {
-                                'nama': nama,
-                                'email': email,
-                                'nomorHP': nomorHP,
-                                'message': message,
-                              });
+                            'https://pts-c06-pbp.up.railway.app/faq/post-exp/',
+                            {
+                              'nama': nama,
+                              'email': email,
+                              'nomorHP': nomorHP,
+                              'message': message,
+                            },
+                          );
                         }
                       },
                     )
