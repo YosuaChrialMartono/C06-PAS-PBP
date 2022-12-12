@@ -4,7 +4,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
 import 'package:provider/provider.dart';
-//import 'package:provider/provider.dart';
 
 void main() {
   runApp(const MyApp());
@@ -74,7 +73,7 @@ class _MyHomePage extends State<MyHomePage> {
                     style: ElevatedButton.styleFrom(
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10)),
-                        minimumSize: Size(100, 45)),
+                        minimumSize: const Size(100, 45)),
                     child: Text(
                       'Login',
                       style: GoogleFonts.montserrat(
@@ -83,7 +82,7 @@ class _MyHomePage extends State<MyHomePage> {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => Login()),
+                        MaterialPageRoute(builder: (context) => const Login()),
                       );
                     },
                   )),
