@@ -187,44 +187,47 @@ class _formWallofhopePage extends State<formWallofhopePage> {
                               ),
                               onPressed: () async {
                                 if (_formKey.currentState!.validate()) {
-                                  showDialog(
-                                    context: context,
-                                    builder: (context) {
-                                      return Dialog(
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(10),
-                                        ),
-                                        elevation: 15,
-                                        child: Container(
-                                          child: ListView(
-                                            padding: const EdgeInsets.only(
-                                                top: 20, bottom: 20),
-                                            shrinkWrap: true,
-                                            children: <Widget>[
-                                              const Center(
-                                                  child: Text(
-                                                      'Berhasil Menambahkan Data')),
-                                              const SizedBox(height: 20),
-                                              TextButton(
-                                                onPressed: () {
-                                                  Navigator.pop(context);
-                                                },
-                                                child: const Text('Kembali'),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      );
-                                    },
-                                  );
                                   const url =
-                                      "https://pts-c06-pbp.up.railway.app/wallofhope/add/";
+                                      "https://pts-c06-pbp.up.railway.app/wallofhope/add_wallofhope/";
                                   final response = await request.post(url, {
                                     "judul": judul,
                                     "link": link,
                                     "deskripsi": deskripsi,
                                   });
+                                  print(response);
+                                  if (response["status"]) {
+                                    showDialog(
+                                      context: context,
+                                      builder: (context) {
+                                        return Dialog(
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(10),
+                                          ),
+                                          elevation: 15,
+                                          child: Container(
+                                            child: ListView(
+                                              padding: const EdgeInsets.only(
+                                                  top: 20, bottom: 20),
+                                              shrinkWrap: true,
+                                              children: <Widget>[
+                                                const Center(
+                                                    child: Text(
+                                                        'Berhasil Menambahkan Data')),
+                                                const SizedBox(height: 20),
+                                                TextButton(
+                                                  onPressed: () {
+                                                    Navigator.pop(context);
+                                                  },
+                                                  child: const Text('Kembali'),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        );
+                                      },
+                                    );
+                                  }
                                 } else {
                                   showDialog(
                                     context: context,

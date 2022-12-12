@@ -21,22 +21,18 @@ class _wallofhopeMenuPage extends State<wallofhopeMenuPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar:AppBar(
+        appBar: AppBar(
           title: Text(widget.title),
           backgroundColor: Color(0xffAA8B56),
         ),
         drawer: const PTS_Drawer(),
         body: Container(
-           decoration: const BoxDecoration(
+          decoration: const BoxDecoration(
               gradient: LinearGradient(
-                colors: [
-                  Color(0xff4E6C50),
-                  Color(0xffaa8b56)
-                ],
-                begin: Alignment.bottomLeft,
-                end: Alignment.topRight,
-              )
-            ),
+            colors: [Color(0xff4E6C50), Color(0xffaa8b56)],
+            begin: Alignment.bottomLeft,
+            end: Alignment.topRight,
+          )),
           padding: const EdgeInsets.all(20.0),
           child: Center(
             child: Column(
@@ -65,68 +61,38 @@ class _wallofhopeMenuPage extends State<wallofhopeMenuPage> {
                       },
                       child: const Text("Lihat Wall Of Hope")),
                 ),
-                if (LoginState.loggedIn == true) ...[
-                   if (LoginState.userRole == "PASIEN")... [
-                      Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: ElevatedButton(
-                        onPressed: () {
-                          Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (context) => const formWallofhopePage(),
-                            ),
-                          );
-                        },
-                        child: const Text("Buat Wall Of Hope"))),
-                Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: ElevatedButton(
-                        onPressed: () {
-                          Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (context) =>
-                                  const wallofhopePetunjukPage(),
-                            ),
-                          );
-                        },
-                        child: const Text("Petunjuk Pembuatan Wall Of Hope"))),
-                // Padding(
-                //   padding: const EdgeInsets.all(8.0),
-                //   child: ElevatedButton(
-                //   onPressed: () {
-                //   Navigator.of(context).push(
-                //         MaterialPageRoute(
-                //           builder: (context) => _launchURL(),
-                //         ),
-                //     );
-                //   Navigator.of(context).push(
-                //         MaterialPageRoute(
-                //           builder: (context) => wallofhopeMenuPage(),
-                //         ),
-                //     );
-                //   },
-                //   child: const Text("Pembuatan Link Wall Of Hope"))
-                // ),
-                   ]
-
-      
-                ]
-                 
-               
-              
                 
-              ],
+                  if (LoginState.userRole == "PASIEN") ...[
+                    Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: ElevatedButton(
+                            onPressed: () {
+                              Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      const formWallofhopePage(),
+                                ),
+                              );
+                            },
+                            child: const Text("Buat Wall Of Hope"))),
+                    Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: ElevatedButton(
+                            onPressed: () {
+                              Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      const wallofhopePetunjukPage(),
+                                ),
+                              );
+                            },
+                            child:
+                                const Text("Petunjuk Pembuatan Wall Of Hope"))),
+                  ]
+                ]
+              
             ),
           ),
         ));
   }
-  _launchURL() async {
-  const url = 'https://github.com/kkoep/C06-PAS-PBP/issues';
-  // ignore: deprecated_member_use
-  if (await canLaunch(url)) {
-    await launch(url);
-  } else {
-    throw 'Could not launch $url';
-  }
-}
 }
