@@ -74,6 +74,7 @@ class _FAQstate extends State<FAQ> {
           future: fetchFAQRec(),
           builder: (context, AsyncSnapshot snapshot) {
             print(snapshot);
+            print("biar beda");
             if (snapshot.hasData == null) {
               return const Center(child: CircularProgressIndicator());
             } else {
