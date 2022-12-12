@@ -63,6 +63,7 @@ class _articlePage extends State<MyArticlePage> {
           // Here we take the value from the MyHomePage object that was created by
           // the App.build method, and use it to set our appbar title.
           title: Text(widget.title),
+          backgroundColor: Color(0xffAA8B56),
         ),
         drawer: const PTS_Drawer(),
         body: FutureBuilder(
@@ -75,7 +76,7 @@ class _articlePage extends State<MyArticlePage> {
                   return Container(
                     width: MediaQuery.of(context).size.width,
                     padding: const EdgeInsets.all(8),
-                    color: Colors.white,
+                    color: Color(0xfff0ebce),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
