@@ -1,11 +1,15 @@
 import 'package:c06_pas_pbp/page/wallofhope/wallofhope_menu.dart';
 import 'package:flutter/material.dart';
 import 'package:c06_pas_pbp/drawer.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:pbp_django_auth/pbp_django_auth.dart';
+
+import 'package:provider/provider.dart';
 
 class formWallofhopePage extends StatefulWidget {
   const formWallofhopePage({super.key});
 
-  final String title = 'Wall Of Hope';
+  final String title = 'Form Wall Of Hope';
 
   @override
   State<formWallofhopePage> createState() => _formWallofhopePage();
@@ -19,11 +23,11 @@ class _formWallofhopePage extends State<formWallofhopePage> {
 
   @override
   Widget build(BuildContext context) {
-    final request = null; //context<Wallofhope>;
+    final request = context.watch<CookieRequest>();
     return Scaffold(
         appBar: AppBar(
           title: Text(widget.title),
-          backgroundColor: Color(0xff395144),
+          backgroundColor: Color(0xffAA8B56),
         ),
         drawer: const PTS_Drawer(),
         body: Container(

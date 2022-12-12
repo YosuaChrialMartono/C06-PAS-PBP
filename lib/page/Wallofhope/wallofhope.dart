@@ -3,6 +3,8 @@ import 'package:c06_pas_pbp/page/Wallofhope/form_wallofhope.dart';
 import 'package:c06_pas_pbp/page/wallofhope/wallofhope_menu.dart';
 import 'package:c06_pas_pbp/utils/Fetch_Wallofhope.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:c06_pas_pbp/page/login.dart';
 
 class wallofhopePage extends StatefulWidget {
   const wallofhopePage({super.key});
@@ -17,8 +19,8 @@ class wallofhopePageState extends State<wallofhopePage> {
     final request = null; //context.watch<CookieRequest>();
     return Scaffold(
       appBar: AppBar(
-        title: const Text('My Wall of Hope'),
-        backgroundColor: Color(0xff395144),
+        title: Text("Wall Of Hope"),
+        backgroundColor: Color(0xffAA8B56),
       ),
       drawer: const PTS_Drawer(),
       body: Container(
@@ -28,8 +30,7 @@ class wallofhopePageState extends State<wallofhopePage> {
             begin: Alignment.topRight,
             end: Alignment.bottomLeft,
           )),
-          child: Column(
-            children: [
+          child: Column(children: [
             Container(
                 child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -38,28 +39,57 @@ class wallofhopePageState extends State<wallofhopePage> {
                     future: fetchwallofhope(request),
                     builder: (context, AsyncSnapshot snapshot) {
                       if (snapshot.data == null) {
+                        if (LoginState.loggedIn == true) {
+                          if (LoginState.userRole == "Pasien") {
+                            return Column(
+                              children: [
+                                addSection(),
+                                const Center(
+                                    child: CircularProgressIndicator()),
+                                const Text(
+                                  "wall of hope berisi null",
+                                  style: TextStyle(
+                                      color: Colors.white, fontSize: 18),
+                                ),
+                              ],
+                            );
+                          }
+                        }
                         return Column(
-                          children: [
-                            addSection(),
-                            const Center(child: CircularProgressIndicator()),
-                            const Text(
-                                "wall of hope null",
-                                style: TextStyle(
-                                    color: Colors.white, fontSize: 18),
-                              ),
+                          children: const [
+                            Center(child: CircularProgressIndicator()),
+                            Text(
+                              "wall of hope berisi null",
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 18),
+                            ),
                           ],
                         );
                       } else {
                         if (snapshot.data <= 0) {
+                          if (LoginState.loggedIn == true) {
+                            if (LoginState.userRole == "Pasien") {
+                              return Column(
+                                children: [
+                                  addSection(),
+                                  const Text(
+                                    "Wall of hope kosong!, silahkan isi untuk menampilkan wall of hope",
+                                    style: TextStyle(
+                                        color: Colors.white, fontSize: 18),
+                                  ),
+                                  const SizedBox(height: 8),
+                                ],
+                              );
+                            }
+                          }
                           return Column(
-                            children: [
-                              addSection(),
-                              const Text(
+                            children: const [
+                              Text(
                                 "Wall of hope kosong!, silahkan isi untuk menampilkan wall of hope",
                                 style: TextStyle(
                                     color: Colors.white, fontSize: 18),
                               ),
-                              const SizedBox(height: 8),
+                              SizedBox(height: 8),
                             ],
                           );
                         } else {
@@ -76,7 +106,7 @@ class wallofhopePageState extends State<wallofhopePage> {
                                           title: Text(
                                               "${snapshot.data![index].fields.judul}"),
                                           subtitle: Text(
-                                            'Secondary Text',
+                                            '=========',
                                             style: TextStyle(
                                                 color: Colors.black
                                                     .withOpacity(0.6)),
