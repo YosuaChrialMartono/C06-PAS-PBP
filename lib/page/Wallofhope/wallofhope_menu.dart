@@ -59,7 +59,8 @@ class _wallofhopeMenuPage extends State<wallofhopeMenuPage> {
                       },
                       child: const Text("Lihat Wall Of Hope")),
                 ),
-                
+
+                if (LoginState.loggedIn == true) ...[
                   if (LoginState.userRole == "PASIEN") ...[
                     Padding(
                         padding: const EdgeInsets.all(8.0),
@@ -88,9 +89,10 @@ class _wallofhopeMenuPage extends State<wallofhopeMenuPage> {
                                 const Text("Petunjuk Pembuatan Wall Of Hope"))),
                   ]
                 ]
-              
+             
             ),
           ),
         ));
   }
+
 }
