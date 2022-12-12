@@ -300,8 +300,8 @@ class _SignUpState extends State<SignUp> {
                         onPressed: () async {
                           if (_regFormKey.currentState!.validate()) {
                             final response = await request.post(
-                                //"https:///autentikasi/reg_apk/",
-                                "http://127.0.0.1:8000/auth/register/",
+                                "https://pts-c06-pbp.up.railway.app/auth/register/",
+                                //"http://127.0.0.1:8000/auth/register/",
                                 {
                                   'username': username,
                                   'password1': password1,
