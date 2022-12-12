@@ -13,10 +13,12 @@ class FAQ extends StatefulWidget {
 }
 
 class _FAQstate extends State<FAQ> {
+  Future<List<Experience>>
+
   Future<List<FaqRecommendations>> fetchFAQRec() async {
-    var url = Uri.parse('https://pts-c06-pbp.up.railway.app/faq/json/');
+    var urlGet = Uri.parse('https://pts-c06-pbp.up.railway.app/faq/json/');
     var response = await http.get(
-      url,
+      urlGet,
       headers: {
         "Access-Control-Allow-Origin": "*",
         "Content-Type": "application/json",
@@ -73,30 +75,91 @@ class _FAQstate extends State<FAQ> {
       ),
       drawer: const PTS_Drawer(),
       body: FutureBuilder(
-          future: fetchFAQRec(),
-          builder: (context, AsyncSnapshot snapshot) {
-            print(snapshot);
-            print("biar beda");
-            if (snapshot.hasData == null) {
-              return const Center(child: CircularProgressIndicator());
+        future: fetchFAQRec(),
+        builder: (context, AsyncSnapshot snapshot) {
+          // ignore: unnecessary_null_comparison
+          if (snapshot.hasData == null) {
+            return const Center(child: CircularProgressIndicator());
+          } else {
+            if (!snapshot.hasData) {
+              return Column(
+                children: const [
+                  Text(
+                    "Tidak ada FAQ",
+                    style: TextStyle(color: Colors.red, fontSize: 20),
+                  ),
+                  SizedBox(height: 8),
+                ],
+              );
             } else {
-              if (!snapshot.hasData) {
-                return Column(
-                  children: const [
-                    Text(
-                      "Tidak ada FAQ",
-                      style: TextStyle(color: Colors.red, fontSize: 20),
+              return ListView.builder(
+                  itemCount: snapshot.data!.length,
+                  itemBuilder: (_, index) => makeCard(snapshot.data![index]));
+            }
+          }
+        },
+      ),
+      persistentFooterButtons: [
+        ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.blue,
+            minimumSize: const Size.fromHeight(60),
+          ),
+          onPressed: () {
+            showDialog(
+              context: context,
+              builder: (context) {
+                return AlertDialog(
+                  scrollable: true,
+                  title: const Text('Share With Us!'),
+                  content: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Form(
+                      child: Column(
+                        children: <Widget>[
+                          TextFormField(
+                            decoration: const InputDecoration(
+                              labelText: 'Nama Lengkap',
+                              icon: Icon(Icons.account_box),
+                            ),
+                          ),
+                          TextFormField(
+                            decoration: const InputDecoration(
+                              labelText: 'Email',
+                              icon: Icon(Icons.email),
+                            ),
+                          ),
+                          TextFormField(
+                            decoration: const InputDecoration(
+                              labelText: 'Nomor HP',
+                              icon: Icon(Icons.local_phone),
+                            ),
+                          ),
+                          TextFormField(
+                            decoration: const InputDecoration(
+                              labelText: 'Pesan',
+                              icon: Icon(Icons.message),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
-                    SizedBox(height: 8),
+                  ),
+                  actions: [
+                    ElevatedButton(
+                      child: const Text('Submit'),
+                      onPressed: () {
+                        // TODO: implement HTTP POST
+                      },
+                    )
                   ],
                 );
-              } else {
-                return ListView.builder(
-                    itemCount: snapshot.data!.length,
-                    itemBuilder: (_, index) => makeCard(snapshot.data![index]));
-              }
-            }
-          }),
+              },
+            );
+          },
+          child: const Text('Share With Us!'),
+        ),
+      ],
     );
   }
 }
