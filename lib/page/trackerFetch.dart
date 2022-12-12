@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:c06_pas_pbp/drawer.dart';
 import 'package:c06_pas_pbp/model/tracker.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:c06_pas_pbp/page/login.dart';
 
 class TrackerData extends StatefulWidget {
   const TrackerData({super.key});
@@ -26,7 +28,13 @@ class _TrackerDataState extends State<TrackerData> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Data from Tracker'),
+          title: Text('Data from Tracker',
+           textAlign: TextAlign.center,
+                          style: GoogleFonts.montserrat(
+                              fontSize: 25,
+                              fontWeight: FontWeight.bold,
+                              color: Color(0xfff0ebce))),
+          backgroundColor: Color(0xffAA8B56),
         ),
         drawer: const PTS_Drawer(),
         body: Center(
@@ -55,7 +63,7 @@ class _TrackerDataState extends State<TrackerData> {
                       DataColumn(label: Text('Email')),
                       DataColumn(label: Text('Age')),
                       DataColumn(label: Text('Gender')),
-                      DataColumn(label: Text('Head Circumference')),
+                      DataColumn(label: Text('Head\nCircumference')),
                       DataColumn(label: Text('Height')),
                       DataColumn(label: Text('Weight')),
                       DataColumn(label: Text('Description')),
