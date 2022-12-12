@@ -22,6 +22,27 @@ class _FAQstate extends State<FAQ> {
   String nomorHP = "";
   String message = "";
 
+  Future<List<FaqRecommendations>> fetchSharing() async {
+    var urlGet = Uri.parse('https://pts-c06-pbp.up.railway.app/faq/post-exp/');
+    var response = await http.get(
+      urlGet,
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Content-Type": "application/json",
+      },
+    );
+
+    var data = jsonDecode(utf8.decode(response.bodyBytes));
+
+    List<FaqRecommendations> listSharing = [];
+    for (var d in data) {
+      if (d != null) {
+        listSharing.add(FaqRecommendations.fromJson(d));
+      }
+    }
+    return listSharing;
+  }
+
   Future<List<FaqRecommendations>> fetchFAQRec() async {
     var urlGet = Uri.parse('https://pts-c06-pbp.up.railway.app/faq/json/');
     var response = await http.get(
