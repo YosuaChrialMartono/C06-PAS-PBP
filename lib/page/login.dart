@@ -1,6 +1,7 @@
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:c06_pas_pbp/page/signin.dart';
+import 'package:c06_pas_pbp/page/landingpage.dart';
 
 void main() {
   runApp(MyLoginPage());
@@ -49,7 +50,7 @@ class _LoginState extends State<Login> {
                   fontWeight: FontWeight.bold,
                   color: Colors.black)),
           Container(
-            padding: const EdgeInsets.fromLTRB(30, 15, 30, 0),
+            padding: const EdgeInsets.fromLTRB(40, 15, 40, 0),
             child: TextFormField(
               decoration: InputDecoration(
                   border: OutlineInputBorder(
@@ -104,7 +105,12 @@ class _LoginState extends State<Login> {
                   style: GoogleFonts.montserrat(
                       fontSize: 15, fontWeight: FontWeight.bold),
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => MyLandingPage()),
+                  );
+                },
               )),
           Row(
             children: <Widget>[
