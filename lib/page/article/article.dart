@@ -1,7 +1,9 @@
+import 'package:c06_pas_pbp/main.dart';
 import 'package:c06_pas_pbp/model/article.dart';
 import 'package:flutter/material.dart';
 import 'package:c06_pas_pbp/drawer.dart';
 import 'package:c06_pas_pbp/page/article/articleDetail.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main() {
   runApp(const MyApp());
@@ -74,15 +76,41 @@ class _articlePage extends State<MyArticlePage> {
                 return const Center(child: CircularProgressIndicator());
               } else {
                 if (!snapshot.hasData) {
-                  return Column(
-                    children: const [
-                      Text(
-                        "Artikel kosong",
-                        style:
-                            TextStyle(color: Color(0xff59A5D8), fontSize: 20),
-                      ),
-                      SizedBox(height: 8),
-                    ],
+                  return Container(
+                    width: MediaQuery.of(context).size.width,
+                    padding: const EdgeInsets.all(8),
+                    color: Colors.white,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: <Widget>[
+                        Text("Artikel kosong",
+                            style: GoogleFonts.montserrat(
+                                fontSize: 25,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black)),
+                        Container(
+                            padding: const EdgeInsets.fromLTRB(40, 15, 40, 0),
+                            child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10)),
+                                  minimumSize: const Size(100, 45)),
+                              child: Text(
+                                'Back',
+                                style: GoogleFonts.montserrat(
+                                    fontSize: 15, fontWeight: FontWeight.bold),
+                              ),
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => const MyHomePage()),
+                                );
+                              },
+                            )),
+                      ],
+                    ),
                   );
                 } else {
                   return ListView.builder(
@@ -104,13 +132,15 @@ class _articlePage extends State<MyArticlePage> {
                                 ),
                                 child: Row(
                                   children: [
-                                    Text(
-                                      "${snapshot.data![index].pk}",
-                                      style: const TextStyle(
-                                        fontSize: 18.0,
-                                        fontWeight: FontWeight.bold,
+                                    Center(
+                                      child: Text(
+                                        "${snapshot.data![index].pk}",
+                                        style: const TextStyle(
+                                          fontSize: 18.0,
+                                          fontWeight: FontWeight.bold,
+                                        ),
                                       ),
-                                    ),
+                                    )
                                   ],
                                 )),
                           ));
