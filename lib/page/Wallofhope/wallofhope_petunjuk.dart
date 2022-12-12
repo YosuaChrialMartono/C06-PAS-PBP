@@ -19,6 +19,7 @@ class _wallofhopePetunjukPage extends State<wallofhopePetunjukPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Petunjuk Pembuatan Wall of Hope'),
+        backgroundColor: Color(0xff395144),
       ),
       drawer: const PTS_Drawer(),
       body: Container(
