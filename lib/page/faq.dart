@@ -80,6 +80,7 @@ class _FAQstate extends State<FAQ> {
       appBar: AppBar(
         title: const Text("Frequently Asked Questions"),
         centerTitle: true,
+        backgroundColor: Color(0xffAA8B56),
       ),
       drawer: const PTS_Drawer(),
       body: FutureBuilder(
@@ -110,7 +111,7 @@ class _FAQstate extends State<FAQ> {
       persistentFooterButtons: [
         ElevatedButton(
           style: ElevatedButton.styleFrom(
-            backgroundColor: Colors.blue,
+            backgroundColor: Color(0xffAA8B56),
             minimumSize: const Size.fromHeight(60),
           ),
           onPressed: () {
@@ -222,7 +223,7 @@ class _FAQstate extends State<FAQ> {
                     ElevatedButton(
                       child: const Text('Submit'),
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.blue,
+                        backgroundColor: Color(0xffAA8B56),
                         minimumSize: const Size.fromHeight(50),
                       ),
                       onPressed: () async {

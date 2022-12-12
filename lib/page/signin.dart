@@ -51,13 +51,19 @@ class _SignUpState extends State<SignUp> {
         drawer: const PTS_Drawer(),
         appBar: AppBar(
           title: Text(widget.title),
+          backgroundColor: Color(0xffAA8B56),
         ),
         body: Form(
             key: _regFormKey,
             child: Container(
               width: MediaQuery.of(context).size.width,
               padding: const EdgeInsets.all(8),
-              color: Colors.white,
+              decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                colors: [Color(0xff4E6C50), Color(0xffaa8b56)],
+                begin: Alignment.bottomLeft,
+                end: Alignment.topRight,
+              )),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -69,22 +75,24 @@ class _SignUpState extends State<SignUp> {
                       style: GoogleFonts.montserrat(
                           fontSize: 25,
                           fontWeight: FontWeight.bold,
-                          color: Colors.black)),
+                          color: Color(0xff395144))),
                   Container(
-                    padding: const EdgeInsets.fromLTRB(30, 15, 30, 0),
+                    padding: const EdgeInsets.fromLTRB(50, 15, 50, 0),
                     child: TextFormField(
                       decoration: InputDecoration(
+                          filled: true,
+                          fillColor: Color(0xfff0ebce),
                           border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
+                            borderRadius: BorderRadius.circular(20),
                           ),
                           hintText: "Masukan Email",
-                          hintStyle: TextStyle(color: Colors.black87),
+                          hintStyle: TextStyle(color: Colors.black),
                           prefixIcon: Icon(
                             Icons.email,
                             size: 30,
                           ),
                           labelText: "Email",
-                          labelStyle: TextStyle(color: Colors.black87)),
+                          labelStyle: TextStyle(color: Colors.black)),
                       onChanged: (String? value) {
                         setState(() {
                           email = value!;
@@ -105,20 +113,22 @@ class _SignUpState extends State<SignUp> {
                     ),
                   ),
                   Container(
-                    padding: const EdgeInsets.fromLTRB(30, 15, 30, 0),
+                    padding: const EdgeInsets.fromLTRB(50, 10, 50, 0),
                     child: TextFormField(
                       decoration: InputDecoration(
+                          filled: true,
+                          fillColor: Color(0xfff0ebce),
                           border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
+                            borderRadius: BorderRadius.circular(20),
                           ),
                           hintText: "Masukan Username",
-                          hintStyle: TextStyle(color: Colors.black87),
+                          hintStyle: TextStyle(color: Colors.black),
                           prefixIcon: Icon(
                             Icons.person_pin_outlined,
                             size: 30,
                           ),
                           labelText: "Username",
-                          labelStyle: TextStyle(color: Colors.black87)),
+                          labelStyle: TextStyle(color: Colors.black)),
                       onChanged: (String? value) {
                         setState(() {
                           username = value!;
@@ -139,11 +149,13 @@ class _SignUpState extends State<SignUp> {
                     ),
                   ),
                   Container(
-                    padding: const EdgeInsets.fromLTRB(30, 15, 30, 0),
+                    padding: const EdgeInsets.fromLTRB(50, 10, 50, 0),
                     child: TextFormField(
                       decoration: InputDecoration(
+                          filled: true,
+                          fillColor: Color(0xfff0ebce),
                           border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
+                            borderRadius: BorderRadius.circular(20),
                           ),
                           hintText: "Masukan Nama Lengkap",
                           hintStyle: TextStyle(color: Colors.black87),
@@ -173,12 +185,14 @@ class _SignUpState extends State<SignUp> {
                     ),
                   ),
                   Container(
-                    padding: const EdgeInsets.fromLTRB(30, 15, 30, 0),
+                    padding: const EdgeInsets.fromLTRB(50, 10, 50, 0),
                     child: TextFormField(
                       obscureText: !isPasswordVisible,
                       decoration: InputDecoration(
+                          filled: true,
+                          fillColor: Color(0xfff0ebce),
                           border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
+                            borderRadius: BorderRadius.circular(20),
                           ),
                           hintText: "Masukan Password",
                           hintStyle: TextStyle(color: Colors.black87),
@@ -218,12 +232,14 @@ class _SignUpState extends State<SignUp> {
                     ),
                   ),
                   Container(
-                    padding: const EdgeInsets.fromLTRB(30, 15, 30, 0),
+                    padding: const EdgeInsets.fromLTRB(50, 10, 50, 0),
                     child: TextFormField(
                       obscureText: !isPasswordVisible,
                       decoration: InputDecoration(
+                          filled: true,
+                          fillColor: Color(0xfff0ebce),
                           border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
+                            borderRadius: BorderRadius.circular(20),
                           ),
                           hintText: "Masukan ulang Password",
                           hintStyle: TextStyle(color: Colors.black87),
@@ -263,14 +279,17 @@ class _SignUpState extends State<SignUp> {
                     ),
                   ),
                   Container(
-                    padding: const EdgeInsets.fromLTRB(30, 15, 30, 0),
+                    padding: const EdgeInsets.fromLTRB(50, 10, 50, 0),
                     child: DropdownButtonFormField(
                       decoration: InputDecoration(
+                          filled: true,
+                          fillColor: Color(0xfff0ebce),
                           border: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.black, width: 2),
-                        borderRadius: BorderRadius.circular(10),
-                      )),
-                      dropdownColor: Colors.white,
+                            borderSide:
+                                BorderSide(color: Colors.black, width: 2),
+                            borderRadius: BorderRadius.circular(20),
+                          )),
+                      //dropdownColor: Colors.white,
                       value: role,
                       items: listRole.map((String items) {
                         return DropdownMenuItem(
@@ -295,13 +314,14 @@ class _SignUpState extends State<SignUp> {
                         child: Text(
                           'Sign Up',
                           style: GoogleFonts.montserrat(
-                              fontSize: 15, fontWeight: FontWeight.bold),
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold,
+                              color: Color(0xfff0ebce)),
                         ),
                         onPressed: () async {
                           if (_regFormKey.currentState!.validate()) {
                             final response = await request.post(
-                                //"https:///autentikasi/reg_apk/",
-                                "http://127.0.0.1:8000/auth/register/",
+                                "https://pts-c06-pbp.up.railway.app/auth/register/",
                                 {
                                   'username': username,
                                   'password1': password1,
