@@ -6,6 +6,7 @@ import 'package:c06_pas_pbp/page/article/article.dart';
 import 'package:c06_pas_pbp/page/tracker.dart';
 import 'package:c06_pas_pbp/page/trackerFetch.dart';
 import 'package:c06_pas_pbp/page/login.dart';
+import 'package:c06_pas_pbp/page/faq.dart';
 
 class PTS_Drawer extends StatelessWidget {
   const PTS_Drawer({super.key});
@@ -74,6 +75,16 @@ class PTS_Drawer extends StatelessWidget {
             Navigator.pushReplacement(
               context,
               MaterialPageRoute(builder: (context) => const TrackerData()),
+            );
+          },
+        ),
+        ListTile(
+          title: const Text('FAQ'),
+          onTap: () {
+            // Route ke page artikel
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) => const FAQ()),
             );
           },
         ),

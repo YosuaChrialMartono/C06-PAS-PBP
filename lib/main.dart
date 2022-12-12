@@ -1,10 +1,7 @@
-<<<<<<< HEAD
 import 'package:c06_pas_pbp/page/faq.dart';
-=======
 import 'package:c06_pas_pbp/drawer.dart';
 import 'package:c06_pas_pbp/page/login.dart';
 import 'package:google_fonts/google_fonts.dart';
->>>>>>> cb648141d8f8838be6961d5284d1560921274533
 import 'package:flutter/material.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
 import 'package:provider/provider.dart';
@@ -33,10 +30,6 @@ class MyApp extends StatelessWidget {
           "/login": (BuildContext context) => const Login()
         }, // perhatikan lagi
       ),
-<<<<<<< HEAD
-      home: const FAQ(),
-=======
->>>>>>> cb648141d8f8838be6961d5284d1560921274533
     );
   }
 }

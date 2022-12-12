@@ -1,6 +1,7 @@
 import 'package:c06_pas_pbp/page/faqdetailpage.dart';
 import 'package:flutter/material.dart';
 import 'package:c06_pas_pbp/model/faq_rec.dart';
+import 'package:c06_pas_pbp/drawer.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
@@ -70,6 +71,7 @@ class _FAQstate extends State<FAQ> {
         title: const Text("Frequently Asked Questions"),
         centerTitle: true,
       ),
+      drawer: const PTS_Drawer(),
       body: FutureBuilder(
           future: fetchFAQRec(),
           builder: (context, AsyncSnapshot snapshot) {
