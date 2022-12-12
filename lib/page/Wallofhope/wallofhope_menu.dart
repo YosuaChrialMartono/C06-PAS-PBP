@@ -4,11 +4,13 @@ import 'package:c06_pas_pbp/drawer.dart';
 import 'package:c06_pas_pbp/page/wallofhope/wallofhope.dart';
 import 'package:c06_pas_pbp/page/wallofhope/form_wallofhope.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:c06_pas_pbp/page/login.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class wallofhopeMenuPage extends StatefulWidget {
   const wallofhopeMenuPage({super.key});
 
-  final String title = 'Wall Of Hope';
+  final String title = 'Wall Of Hope Menu';
 
   @override
   State<wallofhopeMenuPage> createState() => _wallofhopeMenuPage();
@@ -19,9 +21,9 @@ class _wallofhopeMenuPage extends State<wallofhopeMenuPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
+        appBar:AppBar(
           title: Text(widget.title),
-          backgroundColor: Color(0xff395144),
+          backgroundColor: Color(0xffAA8B56),
         ),
         drawer: const PTS_Drawer(),
         body: Container(
@@ -63,7 +65,9 @@ class _wallofhopeMenuPage extends State<wallofhopeMenuPage> {
                       },
                       child: const Text("Lihat Wall Of Hope")),
                 ),
-                Padding(
+                if (LoginState.loggedIn == true) ...[
+                   if (LoginState.userRole == "PASIEN")... [
+                      Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: ElevatedButton(
                         onPressed: () {
@@ -103,6 +107,14 @@ class _wallofhopeMenuPage extends State<wallofhopeMenuPage> {
                 //   },
                 //   child: const Text("Pembuatan Link Wall Of Hope"))
                 // ),
+                   ]
+
+      
+                ]
+                 
+               
+              
+                
               ],
             ),
           ),
