@@ -41,6 +41,7 @@ class _TrackerPage extends State<TrackerPage> {
       body: Form(
         key: _formKey,
         child: SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
           child: Container(
             padding: const EdgeInsets.all(20.0),
             child: Column(

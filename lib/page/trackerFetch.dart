@@ -55,7 +55,7 @@ class _TrackerDataState extends State<TrackerData> {
                       DataColumn(label: Text('Email')),
                       DataColumn(label: Text('Age')),
                       DataColumn(label: Text('Gender')),
-                      DataColumn(label: Text('Head Circumference')),
+                      DataColumn(label: Text('Head\nCircumference')),
                       DataColumn(label: Text('Height')),
                       DataColumn(label: Text('Weight')),
                       DataColumn(label: Text('Description')),
