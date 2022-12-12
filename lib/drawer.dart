@@ -5,7 +5,6 @@ import 'package:c06_pas_pbp/page/wallofhope/wallofhope_menu.dart';
 import 'package:c06_pas_pbp/page/article/article.dart';
 import 'package:c06_pas_pbp/page/login.dart';
 
-
 class PTS_Drawer extends StatelessWidget {
   const PTS_Drawer({super.key});
 
@@ -31,7 +30,8 @@ class PTS_Drawer extends StatelessWidget {
             // Route menu ke halaman form
             Navigator.pushReplacement(
               context,
-              MaterialPageRoute(builder: (context) => const wallofhopeMenuPage()),
+              MaterialPageRoute(
+                  builder: (context) => const wallofhopeMenuPage()),
             );
           },
         ),
@@ -52,6 +52,26 @@ class PTS_Drawer extends StatelessWidget {
             Navigator.pushReplacement(
               context,
               MaterialPageRoute(builder: (context) => const MyLoginPage()),
+            );
+          },
+        ),
+        ListTile(
+          title: const Text('Tracker'),
+          onTap: () {
+            // Route ke page artikel
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) => const TrackerPage()),
+            );
+          },
+        ),
+        ListTile(
+          title: const Text('Tracker Data'),
+          onTap: () {
+            // Route ke page artikel
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) => const TrackerData()),
             );
           },
         ),
