@@ -29,7 +29,7 @@ Kini, PTS hadir dalam bentuk mobile untuk menjangkau elemen masyarakat yang lebi
 
 ## Daftar Modul 📝
 - [Diah Afia Safitri] Landing page, login, logout, register
-- [Muhammad Navis Raditya Riayatsyah] FAQ, saran
+- [Muhammad Navis Raditya Riayatsyah] FAQ, saran, contact us
 - [Yosua Chrial Martono] Artikel yang bisa di-_filter_ untuk menjadi konsumsi umum
 - [Yan Christopher Silalahi] Tracker pertumbuhan anak
 - [Made Swastika Nata Negara] Forum untuk bertanya ke tenaga kesehatan
