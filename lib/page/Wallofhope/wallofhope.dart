@@ -1,17 +1,11 @@
-import 'package:c06_pas_pbp/main.dart';
+
 import 'package:c06_pas_pbp/model/Model_Wallofhope.dart';
-import 'package:c06_pas_pbp/model/article.dart';
-import 'package:c06_pas_pbp/page/article/articleForm.dart';
 import 'package:flutter/material.dart';
 import 'package:c06_pas_pbp/drawer.dart';
 import 'package:c06_pas_pbp/page/Wallofhope/form_wallofhope.dart';
 import 'package:c06_pas_pbp/page/wallofhope/wallofhope_menu.dart';
-import 'package:c06_pas_pbp/utils/Fetch_Wallofhope.dart';
-import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:c06_pas_pbp/page/login.dart';
-import 'package:pbp_django_auth/pbp_django_auth.dart';
-import 'package:provider/provider.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -51,7 +45,7 @@ class wallofhopePage extends StatefulWidget {
   // used by the build method of the State. Fields in a Widget subclass are
   // always marked "final".
 
-  final String title = 'Article Page';
+  final String title = 'Wall of hope Page';
 
   @override
   State<wallofhopePage> createState() => _wallofhopePage();
@@ -161,7 +155,10 @@ class _wallofhopePage extends State<wallofhopePage> {
                                   leading:
                                       const Icon(Icons.arrow_drop_down_circle),
                                   title: Text(
-                                      "${snapshot.data![index].fields.judul}"),
+                                      "${snapshot.data![index].fields.judul}",
+                                      style: TextStyle(
+                                        color: Colors.white),),
+                                      
                                 ),
                                 Padding(
                                     padding: const EdgeInsets.all(16.0),
@@ -180,8 +177,6 @@ class _wallofhopePage extends State<wallofhopePage> {
                       });
                 }
               }
-              // Center is a layout widget. It takes a single child and positions it
-              // in the middle of the parent.
             }));
   }
 }

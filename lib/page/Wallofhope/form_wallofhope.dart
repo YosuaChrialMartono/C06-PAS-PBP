@@ -188,14 +188,13 @@ class _formWallofhopePage extends State<formWallofhopePage> {
                               onPressed: () async {
                                 if (_formKey.currentState!.validate()) {
                                   const url =
-                                      "https://pts-c06-pbp.up.railway.app/wallofhope/add_wallofhope/";
+                                      "https://pts-c06-pbp.up.railway.app/wallofhope/add/";
                                   final response = await request.post(url, {
                                     "judul": judul,
-                                    "link": link,
+                                    "image": link,
                                     "deskripsi": deskripsi,
                                   });
-                                  print(response);
-                                  if (response["status"]) {
+                          
                                     showDialog(
                                       context: context,
                                       builder: (context) {
@@ -227,7 +226,7 @@ class _formWallofhopePage extends State<formWallofhopePage> {
                                         );
                                       },
                                     );
-                                  }
+                              
                                 } else {
                                   showDialog(
                                     context: context,
