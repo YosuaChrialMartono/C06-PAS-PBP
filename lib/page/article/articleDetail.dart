@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
 import 'package:provider/provider.dart';
+import 'dart:convert';
 
 class MyDetailPage extends StatefulWidget {
   const MyDetailPage({super.key, required this.modelArtikel});
@@ -17,7 +18,7 @@ class MyDetailPage extends StatefulWidget {
 class _MyDetailPageState extends State<MyDetailPage> {
   final _formKey = GlobalKey<FormState>();
   Articles model;
-  String author = "";
+  String _author = "";
   _MyDetailPageState(this.model);
   @override
   Widget build(BuildContext context) {
@@ -25,10 +26,15 @@ class _MyDetailPageState extends State<MyDetailPage> {
     Future<void> getAuthor() async {
       final response = await request.get(
           'https://pts-c06-pbp.up.railway.app/auth/show-user-json-id/${model.fields.author}');
-      final String author = await /*added */ response[0]["fields"]["nama"];
+
+      final String author = await response[0]["fields"]["nama"];
       print(author.toString());
+      setState(() {
+        _author = author;
+      });
     }
 
+    getAuthor();
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
@@ -97,7 +103,7 @@ class _MyDetailPageState extends State<MyDetailPage> {
                     ),
                   ),
                   Text(
-                    '${getAuthor()}',
+                    '${_author}',
                     style: const TextStyle(
                       fontSize: 14,
                       color: Color(0xfff0ebce),

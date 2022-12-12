@@ -181,7 +181,7 @@ class _articlePage extends State<MyArticlePage> {
                                 ),
                                 child: Row(
                                   children: [
-                                    Center(
+                                    Flexible(
                                       child: Text(
                                         "${snapshot.data![index].pk}",
                                         style: const TextStyle(
