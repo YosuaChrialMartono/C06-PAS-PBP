@@ -27,8 +27,8 @@ class _TrackerPage extends State<TrackerPage> {
   String weight = '';
   String description = '';
 
-  List<String> sexOptions = ['male', 'female'];
-  String selectedSex = 'male';
+  List<String> sexOptions = ['M', 'F'];
+  String selectedSex = 'M';
 
 
   @override
@@ -69,7 +69,7 @@ class _TrackerPage extends State<TrackerPage> {
                     }
                     return null;
                   },
-                  onSaved: (value) => email = value!,
+                  onChanged: (value) => email = value!,
                 ),
                 SizedBox(height: 20.0),
                 TextFormField(
@@ -88,7 +88,7 @@ class _TrackerPage extends State<TrackerPage> {
                     }
                     return null;
                   },
-                  onSaved: (value) => age = value!,
+                  onChanged: (value) => age = value!,
                 ),
                 SizedBox(height: 20.0),
                 DropdownButtonFormField(
@@ -129,7 +129,7 @@ class _TrackerPage extends State<TrackerPage> {
                     }
                     return null;
                   },
-                  onSaved: (value) => headCircumference = value!,
+                  onChanged: (value) => headCircumference = value!,
                 ),
                 SizedBox(height: 20.0),
                 TextFormField(
@@ -148,7 +148,7 @@ class _TrackerPage extends State<TrackerPage> {
                     }
                     return null;
                   },
-                  onSaved: (value) => height = value!,
+                  onChanged: (value) => height = value!,
                 ),
                 SizedBox(height: 20.0),
                 TextFormField(
@@ -167,7 +167,7 @@ class _TrackerPage extends State<TrackerPage> {
                     }
                     return null;
                   },
-                  onSaved: (value) => weight = value!,
+                  onChanged: (value) => weight = value!,
                 ),
                 SizedBox(height: 20.0),
                 TextFormField(
@@ -186,7 +186,7 @@ class _TrackerPage extends State<TrackerPage> {
                     }
                     return null;
                   },
-                  onSaved: (value) => description = value!,
+                  onChanged: (value) => description = value!,
                 ),
                 SizedBox(height: 20.0),
                 ElevatedButton(
@@ -203,16 +203,14 @@ class _TrackerPage extends State<TrackerPage> {
                         {
                           'email': email,
                           'age': age,
-                          'sex': sex,
-                          'headCircumference': headCircumference,
+                          'gender': selectedSex,
+                          'head_circumference': headCircumference,
                           'height': height,
                           'weight': weight,
                           'description': description,  
                         }
                       );
-                      print("RESPONSE IS:::::::::::::");
-                      print(response);
-                       if (response == true) {
+                       if (response["status"]) {
                               showDialog(
                                   context: context,
                                   builder: (context) {
