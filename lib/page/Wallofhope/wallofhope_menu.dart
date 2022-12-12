@@ -87,6 +87,7 @@ class _wallofhopeMenuPage extends State<wallofhopeMenuPage> {
                               const Text("Petunjuk Pembuatan Wall Of Hope"))),
                 ]
               ]
+             ]
             ),
           ),
         ));
