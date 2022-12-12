@@ -21,6 +21,7 @@ class _wallofhopeMenuPage extends State<wallofhopeMenuPage> {
     return Scaffold(
         appBar: AppBar(
           title: Text(widget.title),
+          backgroundColor: Color(0xff395144),
         ),
         drawer: const PTS_Drawer(),
         body: Container(

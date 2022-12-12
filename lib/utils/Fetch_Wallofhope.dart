@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 
-Future<List<Wallofhope>> fetchwallofhope() async {
+Future<List<Wallofhope>> fetchwallofhope(request) async {
     var url = Uri.parse('https://pts-c06-pbp.up.railway.app/wallofhope/json/');
     var response = await http.get(
     url,

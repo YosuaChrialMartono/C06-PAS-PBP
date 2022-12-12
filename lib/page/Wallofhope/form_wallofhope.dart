@@ -1,8 +1,6 @@
-import 'package:c06_pas_pbp/model/Model_Wallofhope.dart';
 import 'package:c06_pas_pbp/page/wallofhope/wallofhope_menu.dart';
 import 'package:flutter/material.dart';
 import 'package:c06_pas_pbp/drawer.dart';
-import 'package:c06_pas_pbp/utils/Fetch_Wallofhope.dart';
 
 class formWallofhopePage extends StatefulWidget {
   const formWallofhopePage({super.key});
@@ -25,33 +23,41 @@ class _formWallofhopePage extends State<formWallofhopePage> {
     return Scaffold(
         appBar: AppBar(
           title: Text(widget.title),
+          backgroundColor: Color(0xff395144),
         ),
         drawer: const PTS_Drawer(),
         body: Container(
-          decoration: const BoxDecoration(
-              gradient: LinearGradient(
-            colors: [Color(0xff4E6C50), Color(0xffaa8b56)],
-            begin: Alignment.topRight,
-            end: Alignment.bottomLeft,
-          )),
-          child: Form(
-            key: _formKey,
-            child: SingleChildScrollView( 
-              padding: const EdgeInsets.all(20.0),
+            decoration: const BoxDecoration(
+                gradient: LinearGradient(
+              colors: [Color(0xff4E6C50), Color(0xffaa8b56)],
+              begin: Alignment.topRight,
+              end: Alignment.bottomLeft,
+            )),
+            child: Form(
+              key: _formKey,
               child: Column(children: [
                 Padding(
                   // Menggunakan padding sebesar 8 pixels
                   padding: const EdgeInsets.all(8.0),
                   child: TextFormField(
+                    style: const TextStyle(color: Colors.white),
                     decoration: InputDecoration(
                       hintText: "Judul",
+                      hintStyle: const TextStyle(color: Colors.white),
                       labelText: "Judul",
+                      labelStyle: const TextStyle(color: Colors.white),
                       // Menambahkan icon agar lebih intuitif
-                      icon: const Icon(Icons.title),
-                      // Menambahkan circular border agar lebih rapi
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(5.0),
+                      icon: const Icon(
+                        Icons.title,
+                        color: Colors.white,
                       ),
+                      // Menambahkan circular border agar lebih rapi
+                      enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(5.0),
+                          borderSide: const BorderSide(
+                            color: Colors.white,
+                          )),
+                      border: const OutlineInputBorder(),
                     ),
                     // Menambahkan behavior saat nama diketik
                     onChanged: (String? value) {
@@ -78,15 +84,24 @@ class _formWallofhopePage extends State<formWallofhopePage> {
                   // Menggunakan padding sebesar 8 pixels
                   padding: const EdgeInsets.all(8.0),
                   child: TextFormField(
+                    style: const TextStyle(color: Colors.white),
                     decoration: InputDecoration(
                       hintText: "Link Image",
+                      hintStyle: const TextStyle(color: Colors.white),
                       labelText: "Link Image",
+                      labelStyle: const TextStyle(color: Colors.white),
                       // Menambahkan icon agar lebih intuitif
-                      icon: const Icon(Icons.image_rounded),
-                      // Menambahkan circular border agar lebih rapi
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(5.0),
+                      icon: const Icon(
+                        Icons.image_rounded,
+                        color: Colors.white,
                       ),
+                      // Menambahkan circular border agar lebih rapi
+                      enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(5.0),
+                          borderSide: const BorderSide(
+                            color: Colors.white,
+                          )),
+                      border: const OutlineInputBorder(),
                     ),
                     // Menambahkan behavior saat nama diketik
                     onChanged: (String? value) {
@@ -113,15 +128,24 @@ class _formWallofhopePage extends State<formWallofhopePage> {
                   // Menggunakan padding sebesar 8 pixels
                   padding: const EdgeInsets.all(8.0),
                   child: TextFormField(
+                    style: const TextStyle(color: Colors.white),
                     decoration: InputDecoration(
                       hintText: "Deskripsi",
+                      hintStyle: const TextStyle(color: Colors.white),
                       labelText: "Deskripsi",
+                      labelStyle: const TextStyle(color: Colors.white),
                       // Menambahkan icon agar lebih intuitif
-                      icon: const Icon(Icons.pages),
-                      // Menambahkan circular border agar lebih rapi
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(5.0),
+                      icon: const Icon(
+                        Icons.pages,
+                        color: Colors.white,
                       ),
+                      // Menambahkan circular border agar lebih rapi
+                      enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(5.0),
+                          borderSide: const BorderSide(
+                            color: Colors.white,
+                          )),
+                      border: const OutlineInputBorder(),
                     ),
                     // Menambahkan behavior saat nama diketik
                     onChanged: (String? value) {
@@ -256,9 +280,6 @@ class _formWallofhopePage extends State<formWallofhopePage> {
                       ],
                     )),
               ]),
-            )
-            )
-          )
-        );
+            )));
   }
 }
