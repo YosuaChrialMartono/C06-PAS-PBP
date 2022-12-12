@@ -62,8 +62,8 @@ class Comment {
     List<Comment> listComments = [];
     for (var i in data) {
       if (i != null) {
-        print(Comment.fromJson(i));
-        listComments.add(Comment.fromJson(i));
+        // print(Comment.fromJson(i));
+        listComments.add(Comment.fromJson(i['fields']));
       }
     }
 

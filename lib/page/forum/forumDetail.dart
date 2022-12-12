@@ -1,9 +1,7 @@
 import 'package:c06_pas_pbp/drawer.dart';
-import 'package:c06_pas_pbp/model/article.dart';
 import 'package:c06_pas_pbp/model/comment.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:intl/intl.dart';
 
 class ForumDetailPage extends StatefulWidget {
   const ForumDetailPage({super.key, required this.modelForum});
@@ -21,7 +19,7 @@ class _ForumDetailPageState extends State<ForumDetailPage> {
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
-        title: Text(model.title.toString()),
+        title: Text("Forum Diskusi"),
         backgroundColor: const Color(0xffAA8B56),
         centerTitle: true,
       ), // Menambahkan drawer menu
