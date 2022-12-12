@@ -193,7 +193,7 @@ class LoginState extends State<Login> {
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) =>
-                                          const MyLandingPage()));
+                                          const MyHomePage()));
                             } else {
                               // Code here will run if the login failed (wrong email/password).
                             }

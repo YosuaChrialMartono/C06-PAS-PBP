@@ -22,6 +22,7 @@ class _MyDetailPageState extends State<MyDetailPage> {
       appBar: AppBar(
         title: Text(model.pk),
         backgroundColor: Color(0xffAA8B56),
+        centerTitle: true,
       ), // Menambahkan drawer menu
       drawer: const PTS_Drawer(),
       body: Container(

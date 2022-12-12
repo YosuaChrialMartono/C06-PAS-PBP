@@ -1,13 +1,11 @@
 import 'package:c06_pas_pbp/main.dart';
 import 'package:c06_pas_pbp/model/article.dart';
+import 'package:c06_pas_pbp/page/article/articleForm.dart';
 import 'package:flutter/material.dart';
 import 'package:c06_pas_pbp/drawer.dart';
 import 'package:c06_pas_pbp/page/article/articleDetail.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-void main() {
-  runApp(const MyApp());
-}
+import 'package:c06_pas_pbp/page/login.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -68,8 +66,38 @@ class _articlePage extends State<MyArticlePage> {
           // the App.build method, and use it to set our appbar title.
           title: Text(widget.title),
           backgroundColor: Color(0xffAA8B56),
+          centerTitle: true,
         ),
         drawer: const PTS_Drawer(),
+        endDrawer: Column(
+          children: [
+            if (LoginState.loggedIn == true)
+              if (LoginState.userRole == "DOKTER")
+                Container(
+                    padding: const EdgeInsets.fromLTRB(40, 20, 40, 0),
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10)),
+                          minimumSize: Size(100, 45),
+                          backgroundColor: Color(0xffAA8B56)),
+                      child: Text(
+                        'Post Article',
+                        style: GoogleFonts.montserrat(
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold,
+                            color: Color(0xfff0ebce)),
+                      ),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => ArticleForm()),
+                        );
+                      },
+                    )),
+          ],
+        ),
         body: FutureBuilder(
             future: Articles.fetchMyArticles(),
             builder: (context, AsyncSnapshot snapshot) {
@@ -99,6 +127,26 @@ class _articlePage extends State<MyArticlePage> {
                                   minimumSize: const Size(100, 45)),
                               child: Text(
                                 'Back',
+                                style: GoogleFonts.montserrat(
+                                    fontSize: 15, fontWeight: FontWeight.bold),
+                              ),
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => const MyHomePage()),
+                                );
+                              },
+                            )),
+                        Container(
+                            padding: const EdgeInsets.fromLTRB(40, 15, 40, 0),
+                            child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10)),
+                                  minimumSize: const Size(100, 45)),
+                              child: Text(
+                                'Create Article',
                                 style: GoogleFonts.montserrat(
                                     fontSize: 15, fontWeight: FontWeight.bold),
                               ),
