@@ -61,6 +61,7 @@ class _wallofhopeMenuPage extends State<wallofhopeMenuPage> {
                       },
                       child: const Text("Lihat Wall Of Hope")),
                 ),
+
                 if (LoginState.loggedIn == true) ...[
                   if (LoginState.userRole == "PASIEN") ...[
                     Padding(
@@ -88,38 +89,12 @@ class _wallofhopeMenuPage extends State<wallofhopeMenuPage> {
                             },
                             child:
                                 const Text("Petunjuk Pembuatan Wall Of Hope"))),
-                    // Padding(
-                    //   padding: const EdgeInsets.all(8.0),
-                    //   child: ElevatedButton(
-                    //   onPressed: () {
-                    //   Navigator.of(context).push(
-                    //         MaterialPageRoute(
-                    //           builder: (context) => _launchURL(),
-                    //         ),
-                    //     );
-                    //   Navigator.of(context).push(
-                    //         MaterialPageRoute(
-                    //           builder: (context) => wallofhopeMenuPage(),
-                    //         ),
-                    //     );
-                    //   },
-                    //   child: const Text("Pembuatan Link Wall Of Hope"))
-                    // ),
                   ]
                 ]
-              ],
+             
             ),
           ),
         ));
   }
 
-  _launchURL() async {
-    const url = 'https://github.com/kkoep/C06-PAS-PBP/issues';
-    // ignore: deprecated_member_use
-    if (await canLaunch(url)) {
-      await launch(url);
-    } else {
-      throw 'Could not launch $url';
-    }
-  }
 }
