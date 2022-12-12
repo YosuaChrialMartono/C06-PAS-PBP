@@ -1,5 +1,11 @@
+import 'package:c06_pas_pbp/page/login.dart';
+import 'package:c06_pas_pbp/page/trackerFetch.dart';
 import 'package:flutter/material.dart';
 import 'package:c06_pas_pbp/drawer.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:http/http.dart' as http;
+import 'package:provider/provider.dart';
+import 'package:pbp_django_auth/pbp_django_auth.dart';
 
 class TrackerPage extends StatefulWidget {
   const TrackerPage({super.key});
@@ -24,18 +30,20 @@ class _TrackerPage extends State<TrackerPage> {
   List<String> sexOptions = ['male', 'female'];
   String selectedSex = 'male';
 
-  void _submitForm() {
-    if (_formKey.currentState!.validate()) {
-      _formKey.currentState!.save();
-      // Perform any necessary actions with the form data here
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
+    final request = context.watch<CookieRequest>();
     return Scaffold(
       appBar: AppBar(
-        title: Text(TrackerPage.title),
+        title: Text(TrackerPage.title,
+         textAlign: TextAlign.center,
+                          style: GoogleFonts.montserrat(
+                              fontSize: 25,
+                              fontWeight: FontWeight.bold,
+                              color: Color(0xfff0ebce))),
+        backgroundColor: Color(0xffAA8B56),
+      
       ),
       drawer: const PTS_Drawer(),
       body: Form(
@@ -182,9 +190,103 @@ class _TrackerPage extends State<TrackerPage> {
                 ),
                 SizedBox(height: 20.0),
                 ElevatedButton(
-                  child: Text('Submit'),
-                  onPressed: _submitForm,
+                  child: Text('Submit',
+                   textAlign: TextAlign.center,
+                          style: GoogleFonts.montserrat(
+                              fontSize: 25,
+                              fontWeight: FontWeight.bold,
+                              color: Color(0xfff0ebce))),
+                  onPressed: () async {
+                    if (_formKey.currentState!.validate()){
+                      final response = await request.post(
+                        "https://pts-c06-pbp.up.railway.app/tracking/post-tracker/",
+                        {
+                          'email': email,
+                          'age': age,
+                          'sex': sex,
+                          'headCircumference': headCircumference,
+                          'height': height,
+                          'weight': weight,
+                          'description': description,  
+                        }
+                      );
+                      print("RESPONSE IS:::::::::::::");
+                      print(response);
+                       if (response == true) {
+                              showDialog(
+                                  context: context,
+                                  builder: (context) {
+                                    return Dialog(
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(20)),
+                                      elevation: 15,
+                                      child: Container(
+                                        child: ListView(
+                                          padding: const EdgeInsets.all((20)),
+                                          shrinkWrap: true,
+                                          children: <Widget>[
+                                            SizedBox(
+                                              height: 20,
+                                            ),
+                                            Center(
+                                              child: Column(
+                                                children: [
+                                                  Text(
+                                                    "Successful",
+                                                    textAlign: TextAlign.center,
+                                                    style:
+                                                        TextStyle(fontSize: 16),
+                                                  )
+                                                ],
+                                              ),
+                                            ),
+                                            SizedBox(
+                                              height: 20,
+                                            ),
+                                            TextButton(
+                                                onPressed: (() {
+                                                  Navigator.pushReplacement(
+                                                    context,
+                                                    MaterialPageRoute(
+                                                        builder: (context) =>
+                                                            const TrackerPage()),
+                                                  );
+                                                  ;
+                                                }),
+                                                child: Text(
+                                                  'ok',
+                                                  style:
+                                                      TextStyle(fontSize: 16),
+                                                )),
+                                          ],
+                                        ),
+                                      ),
+                                    );
+                                  });
+                            }
+                    }
+                  },
                 ),
+                if(LoginState.loggedIn == true && LoginState.userRole == 'DOKTER')
+                  ElevatedButton(
+                     style: ElevatedButton.styleFrom(
+                    backgroundColor: Color(0xffAA8B56),
+                        padding: EdgeInsets.symmetric(horizontal: 50, vertical: 20),
+ // Background color
+  ),
+                  child: Text('DATA',
+                   textAlign: TextAlign.center,
+                          style: GoogleFonts.montserrat(
+                              fontSize: 26,
+                              fontWeight: FontWeight.bold,
+                              color: Color(0xfff0ebce))),
+                    onPressed: (){
+                      Navigator.push(context, 
+                      MaterialPageRoute(builder: (context) => TrackerData())
+                    );
+                  },
+                  )
               ],
             ),
           ),
