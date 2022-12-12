@@ -221,8 +221,11 @@ class _FAQstate extends State<FAQ> {
                   actions: [
                     ElevatedButton(
                       child: const Text('Submit'),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.blue,
+                        minimumSize: const Size.fromHeight(50),
+                      ),
                       onPressed: () async {
-                        // TODO: implement HTTP POST
                         if (_formKey.currentState!.validate()) {
                           final response = await request.post(
                               'https://pts-c06-pbp.up.railway.app/faq/post-exp/',
