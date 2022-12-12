@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'package:c06_pas_pbp/model/faq_rec.dart';
 import 'package:flutter/material.dart';
 
