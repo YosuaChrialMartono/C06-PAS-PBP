@@ -50,6 +50,7 @@ class LoginState extends State<Login> {
     return Scaffold(
         appBar: AppBar(
           title: Text(widget.title),
+          backgroundColor: Color(0xffAA8B56),
         ),
         drawer: const PTS_Drawer(),
         body: Form(

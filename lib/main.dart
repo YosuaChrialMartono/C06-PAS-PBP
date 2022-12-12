@@ -48,6 +48,7 @@ class _MyHomePage extends State<MyHomePage> {
           // Here we take the value from the MyHomePage object that was created by
           // the App.build method, and use it to set our appbar title.
           title: Text(widget.title),
+          backgroundColor: Color(0xffAA8B56),
         ),
         drawer: const PTS_Drawer(),
         body: Container(

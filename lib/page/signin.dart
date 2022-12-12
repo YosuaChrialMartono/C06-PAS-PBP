@@ -51,6 +51,7 @@ class _SignUpState extends State<SignUp> {
         drawer: const PTS_Drawer(),
         appBar: AppBar(
           title: Text(widget.title),
+          backgroundColor: Color(0xffAA8B56),
         ),
         body: Form(
             key: _regFormKey,
