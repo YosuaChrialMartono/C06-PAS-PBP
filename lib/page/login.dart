@@ -37,12 +37,12 @@ class LoginState extends State<Login> {
     });
   }
 
-  String email = "";
-  String password1 = "";
+  static String email = "";
+  static String password1 = "";
 
-  String userName = "";
-  String userRole = "";
-  bool loggedIn = false;
+  static String userName = "";
+  static String userRole = "";
+  static bool loggedIn = false;
 
   @override
   Widget build(BuildContext context) {
@@ -232,7 +232,7 @@ class LoginState extends State<Login> {
                           style: GoogleFonts.montserrat(fontSize: 15)),
                       TextButton(
                         child: Text(
-                          'Sign in',
+                          'Sign up',
                           style: GoogleFonts.montserrat(
                               fontSize: 15, fontWeight: FontWeight.bold),
                         ),
