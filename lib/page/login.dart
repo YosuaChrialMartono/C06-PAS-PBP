@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:c06_pas_pbp/page/signin.dart';
 import 'package:c06_pas_pbp/main.dart';
 import 'package:c06_pas_pbp/drawer.dart';
+import 'package:c06_pas_pbp/page/landingpage.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -21,7 +22,6 @@ class MyLoginPage extends StatelessWidget {
     return MaterialApp(
       title: 'Login',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(primarySwatch: Colors.blue, primaryColor: Colors.black),
       home: Login(),
     );
   }
@@ -37,12 +37,12 @@ class LoginState extends State<Login> {
     });
   }
 
-  String email = "";
-  String password1 = "";
+  static String email = "";
+  static String password1 = "";
 
-  String userName = "";
-  String userRole = "";
-  bool loggedIn = false;
+  static String userName = "";
+  static String userRole = "";
+  static bool loggedIn = false;
 
   @override
   Widget build(BuildContext context) {
@@ -50,6 +50,7 @@ class LoginState extends State<Login> {
     return Scaffold(
         appBar: AppBar(
           title: Text(widget.title),
+          backgroundColor: Color(0xffAA8B56),
         ),
         drawer: const PTS_Drawer(),
         body: Form(
@@ -57,7 +58,12 @@ class LoginState extends State<Login> {
             child: Container(
               width: MediaQuery.of(context).size.width,
               padding: const EdgeInsets.all(8),
-              color: Colors.white,
+              decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                colors: [Color(0xff4E6C50), Color(0xffaa8b56)],
+                begin: Alignment.bottomLeft,
+                end: Alignment.topRight,
+              )),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -66,23 +72,24 @@ class LoginState extends State<Login> {
                       style: GoogleFonts.montserrat(
                           fontSize: 25,
                           fontWeight: FontWeight.bold,
-                          color: Colors.black)),
+                          color: Color(0xff395144))),
                   Container(
-                    padding: const EdgeInsets.fromLTRB(30, 15, 30, 0),
-                    width: MediaQuery.of(context).size.width / 1.7,
+                    padding: const EdgeInsets.fromLTRB(50, 15, 50, 0),
                     child: TextFormField(
                       decoration: InputDecoration(
+                          filled: true,
+                          fillColor: Color(0xfff0ebce),
                           border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
+                            borderRadius: BorderRadius.circular(20),
                           ),
                           hintText: "Masukan email",
-                          hintStyle: TextStyle(color: Colors.black87),
+                          hintStyle: TextStyle(color: Colors.black),
                           prefixIcon: Icon(
                             Icons.person,
                             size: 30,
                           ),
                           labelText: "Email",
-                          labelStyle: TextStyle(color: Colors.black87)),
+                          labelStyle: TextStyle(color: Colors.black)),
                       onChanged: (String? value) {
                         setState(() {
                           email = value!;
@@ -102,18 +109,19 @@ class LoginState extends State<Login> {
                     ),
                   ),
                   Container(
-                      padding: const EdgeInsets.fromLTRB(30, 15, 30, 0),
-                      width: MediaQuery.of(context).size.width / 1.7,
+                      padding: const EdgeInsets.fromLTRB(50, 10, 50, 0),
                       child: Stack(
                         children: [
                           TextFormField(
                             obscureText: !isPasswordVisible,
                             decoration: InputDecoration(
+                                filled: true,
+                                fillColor: Color(0xfff0ebce),
                                 border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10),
+                                  borderRadius: BorderRadius.circular(20),
                                 ),
                                 hintText: "Masukan Password",
-                                hintStyle: TextStyle(color: Colors.black87),
+                                hintStyle: TextStyle(color: Colors.black),
                                 prefixIcon: Icon(
                                   Icons.key,
                                   size: 30,
@@ -156,11 +164,14 @@ class LoginState extends State<Login> {
                         style: ElevatedButton.styleFrom(
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10)),
-                            minimumSize: Size(100, 45)),
+                            minimumSize: Size(100, 45),
+                            backgroundColor: Color(0xffAA8B56)),
                         child: Text(
                           'Login',
                           style: GoogleFonts.montserrat(
-                              fontSize: 15, fontWeight: FontWeight.bold),
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold,
+                              color: Color(0xfff0ebce)),
                         ),
                         onPressed: () async {
                           if (_formKey.currentState!.validate()) {
@@ -232,9 +243,11 @@ class LoginState extends State<Login> {
                           style: GoogleFonts.montserrat(fontSize: 15)),
                       TextButton(
                         child: Text(
-                          'Sign in',
+                          'Sign up',
                           style: GoogleFonts.montserrat(
-                              fontSize: 15, fontWeight: FontWeight.bold),
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold,
+                              color: Color(0xff395144)),
                         ),
                         onPressed: () {
                           Navigator.push(
