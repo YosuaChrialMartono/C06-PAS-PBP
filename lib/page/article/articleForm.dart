@@ -1,3 +1,4 @@
+import 'package:c06_pas_pbp/page/article/article.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
@@ -37,6 +38,8 @@ class _ArticleFormState extends State<ArticleForm> {
         drawer: const PTS_Drawer(),
         appBar: AppBar(
           title: Text(widget.title),
+          backgroundColor: Color(0xffAA8B56),
+          centerTitle: true,
         ),
         body: Form(
             key: _regFormKey,
@@ -139,190 +142,107 @@ class _ArticleFormState extends State<ArticleForm> {
                         onPressed: () async {
                           if (_regFormKey.currentState!.validate()) {
                             final response = await request.post(
-                                "https://pts-c06-pbp.up.railway.app/auth/register/",
-                                //"http://127.0.0.1:8000/auth/register/",
+                                "https://pts-c06-pbp.up.railway.app/article/post-article-flutter/",
                                 {
-                                  'username': username,
-                                  'password1': password1,
-                                  'password2': password2,
-                                  'email': email,
-                                  'nama': namaLengkap,
-                                  'role': role.toUpperCase(),
+                                  'title': title,
+                                  'content': content,
                                 }).then((value) => {
                                   print(value),
                                   if (value['status'])
                                     {
+                                      showDialog(
+                                        context: context,
+                                        builder: (context) {
+                                          return Dialog(
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(10),
+                                            ),
+                                            elevation: 15,
+                                            child: Container(
+                                              child: ListView(
+                                                padding:
+                                                    const EdgeInsets.all(20),
+                                                shrinkWrap: true,
+                                                children: <Widget>[
+                                                  SizedBox(height: 20),
+                                                  Center(
+                                                    child: Column(children: [
+                                                      Text(value["message"],
+                                                          textAlign:
+                                                              TextAlign.center,
+                                                          style: TextStyle(
+                                                              fontSize: 16)),
+                                                    ]),
+                                                  ),
+                                                  SizedBox(height: 20),
+                                                  TextButton(
+                                                    onPressed: () {
+                                                      Navigator.pop(context);
+                                                    },
+                                                    child: Text(
+                                                      'ok',
+                                                      style: TextStyle(
+                                                          fontSize: 18),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          );
+                                        },
+                                      ),
                                       Navigator.pushReplacement(
                                         context,
                                         MaterialPageRoute(
                                             builder: (context) =>
-                                                const Login()),
+                                                const MyArticlePage()),
                                       ),
                                     }
                                   else
                                     {
-                                      if (value['role_error'])
-                                        {
-                                          showDialog(
-                                            context: context,
-                                            builder: (context) {
-                                              return Dialog(
-                                                shape: RoundedRectangleBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(10),
-                                                ),
-                                                elevation: 15,
-                                                child: Container(
-                                                  child: ListView(
-                                                    padding:
-                                                        const EdgeInsets.all(
-                                                            20),
-                                                    shrinkWrap: true,
-                                                    children: <Widget>[
-                                                      SizedBox(height: 20),
-                                                      Center(
-                                                        child:
-                                                            Column(children: [
-                                                          Text(value["message"],
-                                                              textAlign:
-                                                                  TextAlign
-                                                                      .center,
-                                                              style: TextStyle(
-                                                                  fontSize:
-                                                                      16)),
-                                                        ]),
-                                                      ),
-                                                      SizedBox(height: 20),
-                                                      TextButton(
-                                                        onPressed: () {
-                                                          Navigator.pop(
-                                                              context);
-                                                        },
-                                                        child: Text(
-                                                          'ok',
+                                      showDialog(
+                                        context: context,
+                                        builder: (context) {
+                                          return Dialog(
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(10),
+                                            ),
+                                            elevation: 15,
+                                            child: Container(
+                                              child: ListView(
+                                                padding:
+                                                    const EdgeInsets.all(20),
+                                                shrinkWrap: true,
+                                                children: <Widget>[
+                                                  SizedBox(height: 20),
+                                                  Center(
+                                                    child: Column(children: [
+                                                      Text(value["message"],
+                                                          textAlign:
+                                                              TextAlign.center,
                                                           style: TextStyle(
-                                                              fontSize: 18),
-                                                        ),
-                                                      ),
-                                                    ],
+                                                              fontSize: 16)),
+                                                    ]),
                                                   ),
-                                                ),
-                                              );
-                                            },
-                                          )
-                                        }
-                                      else if (value["message"]["username"] !=
-                                          null)
-                                        {
-                                          print(
-                                              value["message"]["username"][0]),
-                                          showDialog(
-                                            context: context,
-                                            builder: (context) {
-                                              return Dialog(
-                                                shape: RoundedRectangleBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(10),
-                                                ),
-                                                elevation: 15,
-                                                child: Container(
-                                                  child: ListView(
-                                                    padding:
-                                                        const EdgeInsets.all(
-                                                            20),
-                                                    shrinkWrap: true,
-                                                    children: <Widget>[
-                                                      SizedBox(height: 20),
-                                                      Center(
-                                                        child:
-                                                            Column(children: [
-                                                          Text(
-                                                              value["message"][
-                                                                      "username"]
-                                                                  [0],
-                                                              textAlign:
-                                                                  TextAlign
-                                                                      .center,
-                                                              style: TextStyle(
-                                                                  fontSize:
-                                                                      16)),
-                                                        ]),
-                                                      ),
-                                                      SizedBox(height: 20),
-                                                      TextButton(
-                                                        onPressed: () {
-                                                          Navigator.pop(
-                                                              context);
-                                                        },
-                                                        child: Text(
-                                                          'ok',
-                                                          style: TextStyle(
-                                                              fontSize: 18),
-                                                        ),
-                                                      ),
-                                                    ],
+                                                  SizedBox(height: 20),
+                                                  TextButton(
+                                                    onPressed: () {
+                                                      Navigator.pop(context);
+                                                    },
+                                                    child: Text(
+                                                      'ok',
+                                                      style: TextStyle(
+                                                          fontSize: 18),
+                                                    ),
                                                   ),
-                                                ),
-                                              );
-                                            },
-                                          )
-                                        }
-                                      else if (value["message"]["password2"] !=
-                                          null)
-                                        {
-                                          print(
-                                              value["message"]["password2"][0]),
-                                          showDialog(
-                                            context: context,
-                                            builder: (context) {
-                                              return Dialog(
-                                                shape: RoundedRectangleBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(10),
-                                                ),
-                                                elevation: 15,
-                                                child: Container(
-                                                  child: ListView(
-                                                    padding:
-                                                        const EdgeInsets.all(
-                                                            20),
-                                                    shrinkWrap: true,
-                                                    children: <Widget>[
-                                                      SizedBox(height: 20),
-                                                      Center(
-                                                        child:
-                                                            Column(children: [
-                                                          Text(
-                                                              value["message"][
-                                                                      "password2"]
-                                                                  [0],
-                                                              textAlign:
-                                                                  TextAlign
-                                                                      .center,
-                                                              style: TextStyle(
-                                                                  fontSize:
-                                                                      16)),
-                                                        ]),
-                                                      ),
-                                                      SizedBox(height: 20),
-                                                      TextButton(
-                                                        onPressed: () {
-                                                          Navigator.pop(
-                                                              context);
-                                                        },
-                                                        child: Text(
-                                                          'ok',
-                                                          style: TextStyle(
-                                                              fontSize: 18),
-                                                        ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ),
-                                              );
-                                            },
-                                          )
-                                        }
+                                                ],
+                                              ),
+                                            ),
+                                          );
+                                        },
+                                      )
                                     }
                                 });
                           }
