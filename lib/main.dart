@@ -1,3 +1,4 @@
+import 'package:c06_pas_pbp/page/faq.dart';
 import 'package:c06_pas_pbp/drawer.dart';
 import 'package:c06_pas_pbp/page/login.dart';
 import 'package:c06_pas_pbp/page/signin.dart';
