@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:c06_pas_pbp/drawer.dart';
 import 'package:c06_pas_pbp/page/wallofhope/wallofhope.dart';
 import 'package:c06_pas_pbp/page/wallofhope/form_wallofhope.dart';
+import 'package:url_launcher/url_launcher.dart';
 
-// ignore: camel_case_types
 class wallofhopeMenuPage extends StatefulWidget {
   const wallofhopeMenuPage({super.key});
 
@@ -92,7 +92,12 @@ class _wallofhopeMenuPage extends State<wallofhopeMenuPage> {
                 //   onPressed: () {
                 //   Navigator.of(context).push(
                 //         MaterialPageRoute(
-                //           builder: (context) => const wallofhopeLinkPage(),
+                //           builder: (context) => _launchURL(),
+                //         ),
+                //     );
+                //   Navigator.of(context).push(
+                //         MaterialPageRoute(
+                //           builder: (context) => wallofhopeMenuPage(),
                 //         ),
                 //     );
                 //   },
@@ -103,4 +108,13 @@ class _wallofhopeMenuPage extends State<wallofhopeMenuPage> {
           ),
         ));
   }
+  _launchURL() async {
+  const url = 'https://github.com/kkoep/C06-PAS-PBP/issues';
+  // ignore: deprecated_member_use
+  if (await canLaunch(url)) {
+    await launch(url);
+  } else {
+    throw 'Could not launch $url';
+  }
+}
 }
