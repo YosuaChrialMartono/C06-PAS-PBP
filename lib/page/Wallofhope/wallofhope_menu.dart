@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:c06_pas_pbp/drawer.dart';
 import 'package:c06_pas_pbp/page/wallofhope/wallofhope.dart';
 import 'package:c06_pas_pbp/page/wallofhope/form_wallofhope.dart';
+import 'package:url_launcher/url_launcher.dart';
 
-// ignore: camel_case_types
 class wallofhopeMenuPage extends StatefulWidget {
   const wallofhopeMenuPage({super.key});
 
@@ -21,9 +21,20 @@ class _wallofhopeMenuPage extends State<wallofhopeMenuPage> {
     return Scaffold(
         appBar: AppBar(
           title: Text(widget.title),
+          backgroundColor: Color(0xff395144),
         ),
         drawer: const PTS_Drawer(),
         body: Container(
+           decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                colors: [
+                  Color(0xff4E6C50),
+                  Color(0xffaa8b56)
+                ],
+                begin: Alignment.bottomLeft,
+                end: Alignment.topRight,
+              )
+            ),
           padding: const EdgeInsets.all(20.0),
           child: Center(
             child: Column(
@@ -34,7 +45,7 @@ class _wallofhopeMenuPage extends State<wallofhopeMenuPage> {
                   child: Text(
                     "Wall Of Hope Menu",
                     style: TextStyle(
-                      color: Colors.black,
+                      color: Colors.white,
                       fontFamily: "Roboto",
                       fontSize: 40,
                     ),
@@ -81,7 +92,12 @@ class _wallofhopeMenuPage extends State<wallofhopeMenuPage> {
                 //   onPressed: () {
                 //   Navigator.of(context).push(
                 //         MaterialPageRoute(
-                //           builder: (context) => const wallofhopeLinkPage(),
+                //           builder: (context) => _launchURL(),
+                //         ),
+                //     );
+                //   Navigator.of(context).push(
+                //         MaterialPageRoute(
+                //           builder: (context) => wallofhopeMenuPage(),
                 //         ),
                 //     );
                 //   },
@@ -92,4 +108,13 @@ class _wallofhopeMenuPage extends State<wallofhopeMenuPage> {
           ),
         ));
   }
+  _launchURL() async {
+  const url = 'https://github.com/kkoep/C06-PAS-PBP/issues';
+  // ignore: deprecated_member_use
+  if (await canLaunch(url)) {
+    await launch(url);
+  } else {
+    throw 'Could not launch $url';
+  }
+}
 }
