@@ -5,10 +5,6 @@ import 'package:c06_pas_pbp/drawer.dart';
 import 'package:c06_pas_pbp/page/article/articleDetail.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-void main() {
-  runApp(const MyApp());
-}
-
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -98,6 +94,26 @@ class _articlePage extends State<MyArticlePage> {
                                   minimumSize: const Size(100, 45)),
                               child: Text(
                                 'Back',
+                                style: GoogleFonts.montserrat(
+                                    fontSize: 15, fontWeight: FontWeight.bold),
+                              ),
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => const MyHomePage()),
+                                );
+                              },
+                            )),
+                        Container(
+                            padding: const EdgeInsets.fromLTRB(40, 15, 40, 0),
+                            child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10)),
+                                  minimumSize: const Size(100, 45)),
+                              child: Text(
+                                'Create Article',
                                 style: GoogleFonts.montserrat(
                                     fontSize: 15, fontWeight: FontWeight.bold),
                               ),
