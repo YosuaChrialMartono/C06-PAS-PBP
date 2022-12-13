@@ -13,6 +13,10 @@
 https://pts-c06-pbp.herokuapp.com/
 <br><br> -->
 
+## Tautan File APK📱
+https://drive.google.com/drive/folders/1FoeW84zUJrBjAzHZ53dRufkL3MPqg4Ka?usp=sharing
+<br><br>
+
 ## Tautan Aplikasi Railway🔗
 https://pts-c06-pbp.up.railway.app
 <br><br>
